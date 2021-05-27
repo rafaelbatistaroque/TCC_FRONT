@@ -5,14 +5,14 @@ export const PerfilContext = React.createContext();
 
 export const PerfilProvider = ({ children }) => {
     const [ehAutenticado, setEhAutenticado] = useLocalStorage("@token/Paperless", "");
-    const [perfilId, setPerfilId] = React.useState(0);
+    const [perfilTipo, setPerfilTipo] = React.useState(false);
     const [usuarioNome, setUsuarioNome] = React.useState(null);
 
     return <PerfilContext.Provider value={{
         ehAutenticado,
         setEhAutenticado,
-        perfilId,
-        setPerfilId,
+        perfilTipo,
+        setPerfilTipo,
         usuarioNome,
         setUsuarioNome
     }}>{children}</PerfilContext.Provider>;

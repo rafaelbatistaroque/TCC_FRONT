@@ -1,0 +1,44 @@
+.header {
+  position: fixed;
+  width: 100%;
+  background: var(--cor-clara);
+  z-index: 100;
+  top: 0;
+  border-bottom: var(--borda-padrao);
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  font-weight: 500;
+  font-size: 1.125rem;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  min-height: 3rem;
+  border-bottom: 0;
+  border-top: 0;
+  border-left: var(--borda-padrao);
+  padding: 0.7rem;
+  color: var(--cor-escura);
+}
+
+.menu:last-child {
+  border-right: var(--borda-padrao);
+}
+
+.menu a:hover,
+.menu a.active {
+  color: var(--cor-clara);
+  background: var(--cor-primaria);
+  transition: 0.2s ease;
+}

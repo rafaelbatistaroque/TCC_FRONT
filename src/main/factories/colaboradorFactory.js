@@ -1,6 +1,6 @@
 import React from "react";
-import ObterColaboradoresHandler from "../../features/autenticacao/business/services/ObterColaboradoresHandler";
-import HttpFetchServico from "../../features/autenticacao/infra/http-servico/HttpFetchServico";
+import ObterColaboradoresHandler from "../../features/business/services/ObterColaboradoresHandler";
+import HttpFetchServico from "../../features/infra/http-servico/HttpFetchServico";
 import Colaboradores from "../../presentation/pages/Colaboradores";
 import API from "../../utils/urlApi";
 

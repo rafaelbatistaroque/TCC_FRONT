@@ -3,14 +3,14 @@ import AutenticarUsuario from "../../domain/casos-de-uso/AutenticarUsuario";
 
 export default class AutenticarUsuarioHandler extends AutenticarUsuario {
 	#url;
-	#httpPostServico;
+	#httpServico;
 	#validacoes;
 
-	constructor(url, httpPostServico, validacoes) {
+	constructor(url, httpServico, validacoes) {
 		super();
 
 		this.#url = url;
-		this.#httpPostServico = httpPostServico;
+		this.#httpServico = httpServico;
 		this.#validacoes = validacoes;
 	}
 
@@ -29,7 +29,7 @@ export default class AutenticarUsuarioHandler extends AutenticarUsuario {
 			};
 		}
 
-		const resposta = await this.#httpPostServico.post(this.#url, { usuarioIdentificacao, usuarioSenha });
+		const resposta = await this.#httpServico.post(this.#url, { usuarioIdentificacao, usuarioSenha });
 
 		return resposta;
 	}

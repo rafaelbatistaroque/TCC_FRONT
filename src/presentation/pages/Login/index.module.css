@@ -1,0 +1,31 @@
+.background {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--cor-clara);
+}
+
+.formLogin {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+  width: 25rem;
+  min-height: 15em;
+  border: var(--borda-padrao);
+}
+
+.grupoInputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1rem;
+  width: 25rem;
+  border: transparent;
+}

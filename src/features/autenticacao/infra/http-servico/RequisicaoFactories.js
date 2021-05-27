@@ -14,20 +14,3 @@ export default class Requisicao {
 		};
 	}
 }
-
-
-
-
-// export const criarPost = (body, token) => {
-// 	console.log("body", body);
-// 	return {
-// 		options: {
-// 			method: "POST",
-// 			body: JSON.stringify(body),
-// 			headers: {
-// 				"Content-Type": "application/json",
-// 				authorization: token
-// 			}
-// 		},
-// 	};
-// };

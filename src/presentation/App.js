@@ -2,17 +2,19 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import colaboradorFactory from "../main/factories/colaboradorFactory";
 import loginFactory from "../main/factories/loginFactory";
-import { PerfilProvider } from "./hooks/perfilContext";
+import { PerfilContext } from "./hooks/perfilContext";
 import Rotas from "./Rotas";
 
 const App = () => {
-	return (
-		<BrowserRouter>
-			<PerfilProvider>
-				<Rotas login={loginFactory().build()} colaborador={colaboradorFactory().build()} />
-			</PerfilProvider>
-		</BrowserRouter>
-	);
+  const { ehAutenticado } = React.useContext(PerfilContext);
+  return (
+    <BrowserRouter>
+      <Rotas
+        login={loginFactory().build()}
+        colaborador={colaboradorFactory(ehAutenticado).build()}
+      />
+    </BrowserRouter>
+  );
 };
 
 export default App;

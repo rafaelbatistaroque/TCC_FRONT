@@ -34,7 +34,7 @@ const Colaboradores = ({ obterColaboradores }) => {
       <Header />
       <section className={`${styles.colaboradores} container conteudo`}>
         <TituloPagina tituloPagina="Colaboradores" />
-        <ul className={styles.itensLista}>
+        <ul className={`${styles.itensLista} animarFadeInDeCima`}>
           {colaboradores.length > 0 && colaboradores.map(({ id, nomeCompleto, numeroCPF, funcaoNome, funcaoId }) => (
             <ItemColaborador key={id} funcaoId={funcaoId} funcaoNome={funcaoNome} nomeCompleto={nomeCompleto} numeroCPF={numeroCPF} />
           ))}

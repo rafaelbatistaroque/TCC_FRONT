@@ -42,17 +42,12 @@ img {
 
 button {
 	display: block;
+    width: 4.5rem;
+    outline: none;
+    cursor: pointer;
+    border: var(--borda-padrao);
 	font-size: 1rem;
 	font-family: var(--font-principal-sem-serifa);
-	color: var(--cor-escura);
-}
-
-button.enfase {
-	border-color: var(--cor-enfase);
-}
-
-button.normal {
-	border-color: var(--cor-secundaria);
 }
 
 a {

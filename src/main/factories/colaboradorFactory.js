@@ -4,9 +4,9 @@ import HttpFetchServico from "../../features/infra/http-servico/HttpFetchServico
 import Colaboradores from "../../presentation/pages/Colaboradores";
 import API from "../../utils/urlApi";
 
-const colaboradorFactory = (ehAutenticado) => {
+const colaboradorFactory = (token) => {
   const url = API.obterColaboradores;
-  const httpServico = new HttpFetchServico(ehAutenticado);
+  const httpServico = new HttpFetchServico(token);
   const obterColaboradores = new ObterColaboradoresHandler(url, httpServico);
   return {
     build: () => <Colaboradores obterColaboradores={obterColaboradores} />,

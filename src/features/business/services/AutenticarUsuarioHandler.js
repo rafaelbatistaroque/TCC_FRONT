@@ -15,6 +15,7 @@ export default class AutenticarUsuarioHandler extends AutenticarUsuario {
   }
 
   async handler(usuarioIdentificacao, usuarioSenha) {
+
     this.#validacoes
       .EhRequerido(usuarioIdentificacao, TEXTOS.USUARIO_NULO_VAZIO)
       .EhRequerido(usuarioSenha, TEXTOS.SENHA_NULA_VAZIA);

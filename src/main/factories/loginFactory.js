@@ -2,7 +2,7 @@ import AutenticarUsuarioHandler from "../../features/business/services/Autentica
 import HttpFetchServico from "../../features/infra/http-servico/HttpFetchServico";
 import Login from "../../presentation/pages/Login";
 import API from "../../utils/urlApi";
-import Validacoes from "../Validacoes";
+import Validacoes from "../../utils/Validacoes";
 
 const loginFactory = () => {
   const url = API.autenticacao;

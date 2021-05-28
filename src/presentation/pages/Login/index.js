@@ -25,9 +25,8 @@ const Login = ({ autenticar }) => {
 
     if (resposta.erro) return setMensagensErro([...resposta.data]);
 
-    atribuirRespostaNoContexto(resposta.data);
     limparCampos();
-
+    atribuirRespostaNoContexto(resposta.data);
     navegarPara("/colaborador");
   }
 

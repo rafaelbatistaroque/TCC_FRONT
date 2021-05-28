@@ -1,4 +1,4 @@
-import AutenticarUsuarioHandler from "../../features/business/services/AutenticarUsuarioHandler";
+import AutenticarUsuarioHandler from "../../features/business/services/autenticacao/AutenticarUsuarioHandler";
 import HttpFetchServico from "../../features/infra/http-servico/HttpFetchServico";
 import Login from "../../presentation/pages/Login";
 import API from "../../utils/urlApi";
@@ -10,7 +10,7 @@ const loginFactory = () => {
   const validacoes = new Validacoes();
   const autenticacao = new AutenticarUsuarioHandler(
     url,
-    httpServico,
+    { httpServico },
     validacoes
   );
 

@@ -1,12 +1,12 @@
-import TEXTOS from "../../../utils/textosInformativos";
-import AutenticarUsuario from "../../domain/casos-de-uso/AutenticarUsuario";
+import TEXTOS from "../../../../utils/textosInformativos";
+import AutenticarUsuario from "../../../domain/casos-de-uso/autenticacao/AutenticarUsuario";
 
 export default class AutenticarUsuarioHandler extends AutenticarUsuario {
   #url;
   #httpServico;
   #validacoes;
 
-  constructor(url, httpServico, validacoes) {
+  constructor(url, { httpServico }, validacoes) {
     super();
 
     this.#url = url;
@@ -30,7 +30,7 @@ export default class AutenticarUsuarioHandler extends AutenticarUsuario {
       };
     }
 
-    const resposta = await this.#httpServico.post(this.#url, {
+    const resposta = await this.#httpServico?.post(this.#url, {
       usuarioIdentificacao,
       usuarioSenha,
     });

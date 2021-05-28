@@ -1,10 +1,10 @@
-import ObterColaboradores from "../../domain/casos-de-uso/ObterColaboradores";
+import ObterColaboradores from "../../../domain/casos-de-uso/colaboradores/ObterColaboradores";
 
 export default class ObterColaboradoresHandler extends ObterColaboradores {
   #url;
   #httpServico;
 
-  constructor(url, httpServico) {
+  constructor(url, { httpServico }) {
     super();
 
     this.#url = url;
@@ -12,7 +12,7 @@ export default class ObterColaboradoresHandler extends ObterColaboradores {
   }
 
   async handler() {
-    const resposta = await this.#httpServico.get(this.#url);
+    const resposta = await this.#httpServico?.get(this.#url);
     if (resposta.statusCode === 401)
       return {
         naoAutorizado: true,

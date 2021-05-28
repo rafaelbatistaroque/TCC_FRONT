@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import colaboradorFactory from "../main/factories/colaboradorFactory";
+import { obterColaboradorFactory as colaboradorFactory } from "../main/factories/colaboradorFactories";
 import loginFactory from "../main/factories/loginFactory";
 import { PerfilContext } from "./hooks/perfilContext";
 import Rotas from "./Rotas";

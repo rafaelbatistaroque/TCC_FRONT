@@ -1,4 +1,4 @@
-import TEXTOS from "../../../utils/textosInformativos";
+import TEXTOS from "../../../../utils/textosInformativos";
 
 export default class ObterColaboradores {
   handler() {

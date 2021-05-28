@@ -10,9 +10,7 @@ const Rotas = ({ login, colaborador }) => {
         path="/"
         element={<Navigate to="/colaborador" />}
       />
-      <RotaAutenticada exact path="/colaborador" element={colaborador}>
-        <RotaAutenticada exact path="/:id" element={colaborador} />
-      </RotaAutenticada>
+      <RotaAutenticada exact path="/colaborador" element={colaborador} />
       <RotaAutenticada exact path="/usuarios" element={colaborador} />
       <RotaAutenticada exact path="/api/v1/arquivo/:id" element={colaborador} />
       <Route exact path="/api/v1/arquivo/:id/:codigo" element={colaborador} />

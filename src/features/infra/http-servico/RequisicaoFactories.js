@@ -1,4 +1,3 @@
-
 export default class Requisicao {
 
 	static criarPost(body, token) {
@@ -8,6 +7,17 @@ export default class Requisicao {
 				body: JSON.stringify(body),
 				headers: {
 					"Content-Type": "application/json",
+					authorization: token
+				}
+			},
+		};
+	}
+
+	static criarGet(token) {
+		return {
+			options: {
+				method: "GET",
+				headers: {
 					authorization: token
 				}
 			},

@@ -14,22 +14,23 @@ export default class HttpFetchServico extends HttpServico {
 		const { options } = Requisicao.criarPost(body);
 
 		const promise = await fetch(url, options);
-		const resposta = await promise.json();
+		if (promise.status === 401)
+			return Response.unauthorized();
 
-		const errosDeResponse = {
-			401: Response.unauthorized(),
-			400: Response.badRequest(resposta.erros),
-			500: Response.erroInesperado(),
-			200: Response.ok(resposta)
-		}
-
-		if(promise.status in errosDeResponse === false)
-			return errosDeResponse[500];
-
-		return errosDeResponse[promise.status];
+		const response = Response.criar(promise, await promise.json());
+		return response.obterResponse;
 	}
 
-	get() {
+	async get(url) {
+		const { options } = Requisicao.criarGet(this.#token);
 
+		const promise = await fetch(url, options);
+
+		if (promise.status === 401)
+			return Response.unauthorized();
+
+		const response = Response.criar(promise, await promise.json());
+		return response.obterResponse;
 	}
+
 }

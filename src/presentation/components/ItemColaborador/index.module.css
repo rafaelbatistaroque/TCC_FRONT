@@ -1,0 +1,31 @@
+.itemLista{
+    border: var(--borda-padrao);
+    background: var(--cor-clara);
+    display: flex;
+    height: 4.5rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.institucional{
+    display: flex;
+    flex-direction: column;
+}
+
+.nomeCompleto{
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.funcaoNome{
+    font-size: .85rem;
+    font-style: italic;
+    color: var(--cor-cinza);
+}
+
+.numeroCPF{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}

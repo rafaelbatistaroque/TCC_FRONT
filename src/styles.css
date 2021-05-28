@@ -5,6 +5,7 @@
 	--cor-erro: #e65757;
 	--cor-clara: #f8f8f8;
 	--cor-escura: #333;
+	--cor-cinza: #575757;
 	--font-principal-sem-serifa: Poppins, Helvetica, Arial, sans-serif;
 	--font_secundaria-serifada: "Spectral", Georgia;
 	--borda-padrao: 3px solid var(--cor-escura);
@@ -14,7 +15,7 @@
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	font-family: var(--font-principal-sem-serifa);
+	font-family: var(--font_secundaria-serifada);
 }
 
 h1,
@@ -63,6 +64,10 @@ a {
 	max-width: 90rem;
 	padding: 0 8rem;
 	margin: 0 auto;
+}
+
+.conteudo{
+	margin-top: 4rem;
 }
 
 .animarFadeInDeCima {

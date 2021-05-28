@@ -14,7 +14,7 @@ const Colaboradores = ({ obterColaboradores }) => {
   React.useEffect(() => {
     (async () => {
       const resposta = await obterColaboradores.handler();
-      console.log(resposta);
+
       if (resposta?.naoAutorizado) {
         setEhAutenticado("");
         return navegarPara("/login");

@@ -1,0 +1,7 @@
+[finalidade="btnEditar"]{
+    background: transparent;
+}
+
+[finalidade="btnDeletar"]{
+    background: var(--cor-erro);
+}

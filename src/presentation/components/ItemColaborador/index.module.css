@@ -1,4 +1,10 @@
+.containerItemLista{
+    display: flex;
+    gap: .5rem;
+}
+
 .itemLista{
+    flex: 1;
     border: var(--borda-padrao);
     background: var(--cor-clara);
     display: flex;

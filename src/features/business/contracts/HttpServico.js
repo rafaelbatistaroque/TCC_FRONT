@@ -7,4 +7,7 @@ export default class HttpServico {
   get() {
     throw new Error(TEXTOS.NAO_IMPLEMENTADO);
   }
+  delete() {
+    throw new Error(TEXTOS.NAO_IMPLEMENTADO);
+  }
 }

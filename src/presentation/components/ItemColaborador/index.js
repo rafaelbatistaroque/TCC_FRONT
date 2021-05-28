@@ -2,7 +2,7 @@ import React from 'react';
 import BotaoColaborador from '../BotaoColaborador';
 import styles from './index.module.css';
 
-const ItemColaborador = ({ nomeCompleto, numeroCPF, funcaoNome, funcaoId }) => {
+const ItemColaborador = ({ colaboradorId, nomeCompleto, numeroCPF, funcaoNome, deletarColaborador }) => {
 
     return (<div className={styles.containerItemLista}>
         <li className={styles.itemLista}>
@@ -13,7 +13,7 @@ const ItemColaborador = ({ nomeCompleto, numeroCPF, funcaoNome, funcaoId }) => {
             <span className={styles.numeroCPF}>{numeroCPF}</span>
         </li>
         <BotaoColaborador ehEditar={true} onClick={() => console.log("editou")} />
-        <BotaoColaborador onClick={() => console.log("deletou")} />
+        <BotaoColaborador onClick={() => deletarColaborador({ colaboradorId })} />
     </div>
     );
 

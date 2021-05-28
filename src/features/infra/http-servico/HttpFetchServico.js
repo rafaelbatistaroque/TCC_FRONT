@@ -33,4 +33,17 @@ export default class HttpFetchServico extends HttpServico {
 		return response.obterResponse;
 	}
 
+	async delete(url, colaboradorId) {
+		const { options } = Requisicao.criarDelete(this.#token);
+
+		const promise = await fetch(url, options);
+
+		if (promise.status === 401)
+			return Response.unauthorized();
+
+		const response = Response.criar(promise, await promise.json());
+		return response.obterResponse;
+	}
+
+
 }

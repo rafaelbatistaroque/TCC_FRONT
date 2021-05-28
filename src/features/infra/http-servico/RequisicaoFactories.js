@@ -23,4 +23,15 @@ export default class Requisicao {
 			},
 		};
 	}
+
+	static criarDelete(token) {
+		return {
+			options: {
+				method: "DELETE",
+				headers: {
+					authorization: token
+				}
+			},
+		};
+	}
 }

@@ -6,7 +6,7 @@ import TituloPagina from "../../components/TituloPagina";
 import { PerfilContext } from "../../hooks/perfilContext";
 import styles from "./index.module.css";
 
-const Colaboradores = ({ obterColaboradores }) => {
+const Colaboradores = ({ obterColaboradores, deletarColaborador }) => {
   const { setEhAutenticado } = React.useContext(PerfilContext);
   const [colaboradores, setColaboradores] = React.useState([]);
   const navegarPara = useNavigate();
@@ -29,6 +29,10 @@ const Colaboradores = ({ obterColaboradores }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handlerDeletar = async ({ colaboradorId }) => {
+    const resposta = await deletarColaborador.handler(colaboradorId);
+  };
+
   return (
     <>
       <Header />
@@ -36,7 +40,7 @@ const Colaboradores = ({ obterColaboradores }) => {
         <TituloPagina tituloPagina="Colaboradores" />
         <ul className={`${styles.itensLista} animarFadeInDeCima`}>
           {colaboradores.length > 0 && colaboradores.map(({ id, nomeCompleto, numeroCPF, funcaoNome, funcaoId }) => (
-            <ItemColaborador key={id} funcaoId={funcaoId} funcaoNome={funcaoNome} nomeCompleto={nomeCompleto} numeroCPF={numeroCPF} />
+            <ItemColaborador key={id} colaboradorId={id} deletarColaborador={handlerDeletar} funcaoId={funcaoId} funcaoNome={funcaoNome} nomeCompleto={nomeCompleto} numeroCPF={numeroCPF} />
           ))}
         </ul>
       </section>

@@ -5,11 +5,7 @@ import RotaAutenticada from "../components/RotaAutenticada";
 const Rotas = ({ login, colaborador }) => {
   return (
     <Routes>
-      <RotaAutenticada
-        exact
-        path="/"
-        element={<Navigate to="/colaborador" />}
-      />
+      <Route exact path="/" element={<Navigate to="/login" />} />
       <RotaAutenticada exact path="/colaborador" element={colaborador} />
       <RotaAutenticada exact path="/usuarios" element={colaborador} />
       <RotaAutenticada exact path="/api/v1/arquivo/:id" element={colaborador} />

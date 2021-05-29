@@ -25,13 +25,15 @@
 }
 
 .funcaoNome{
-    font-size: .85rem;
-    font-style: italic;
-    color: var(--cor-cinza);
+    text-align: center;
+    font-weight: bold;
+    font-size: .9rem;
 }
 
 .numeroCPF{
-    text-align: center;
-    font-weight: bold;
-    font-size: 1.2rem;
+    font-size: .8rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--cor-cinza);
+    font-family: var(--font-principal-sem-serifa);
 }

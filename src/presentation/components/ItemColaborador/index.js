@@ -8,9 +8,9 @@ const ItemColaborador = ({ colaboradorId, nomeCompleto, numeroCPF, funcaoNome, d
         <li className={styles.itemLista}>
             <div className={styles.institucional}>
                 <span className={styles.nomeCompleto}>{nomeCompleto}</span>
-                <span className={styles.funcaoNome}>{funcaoNome}</span>
+                <span className={styles.numeroCPF}>{numeroCPF}</span>
             </div>
-            <span className={styles.numeroCPF}>{numeroCPF}</span>
+            <span className={styles.funcaoNome}>{funcaoNome}</span>
         </li>
         <BotaoColaborador ehEditar={true} onClick={() => console.log("editou")} />
         <BotaoColaborador onClick={() => deletarColaborador({ colaboradorId })} />

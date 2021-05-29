@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./index.module.css";
 import { NavLink } from "react-router-dom";
 
-const Header = ({ehPerfilAdministrador = false }) => {
+const Header = ({ ehPerfilAdministrador = false }) => {
   return (
     <header className={styles.header}>
       <nav className={`${styles.nav} container`}>

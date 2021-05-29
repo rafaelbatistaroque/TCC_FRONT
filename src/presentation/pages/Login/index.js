@@ -8,8 +8,9 @@ import useForm from "../../hooks/useForm";
 import styles from "./index.module.css";
 
 const Login = ({ autenticar }) => {
+
     const [mensagensErro, setMensagensErro] = React.useState([]);
-    const { setEhAutenticado, setPerfilTipo, setUsuarioNome } = React.useContext(PerfilContext);
+    const { salvarSessao } = React.useContext(PerfilContext);
     const usuario = useForm();
     const senha = useForm();
     const navegarPara = useNavigate();
@@ -26,8 +27,9 @@ const Login = ({ autenticar }) => {
             return setMensagensErro([...data]);
 
         limparCampos();
-        atribuirRespostaNoContexto(data);
-        navegarPara("/colaborador/listar");
+        salvarSessao(data);
+        // atribuirRespostaNoContexto(data);
+        navegarPara("/app");
     }
 
     function limparMensagemErro() {
@@ -37,12 +39,6 @@ const Login = ({ autenticar }) => {
     function limparCampos() {
         usuario.setValor("");
         senha.setValor("");
-    }
-
-    function atribuirRespostaNoContexto(resposta) {
-        setEhAutenticado(resposta.token);
-        setPerfilTipo(resposta.perfilId === 1);
-        setUsuarioNome(resposta.nomeUsuario);
     }
 
     return (

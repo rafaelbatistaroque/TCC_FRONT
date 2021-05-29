@@ -6,7 +6,7 @@ import { PerfilContext } from "../../hooks/perfilContext";
 import styles from "./index.module.css";
 
 const Colaboradores = ({ obterColaboradores, deletarColaborador }) => {
-    const { setEhAutenticado } = React.useContext(PerfilContext);
+    const { limparSessao } = React.useContext(PerfilContext);
     const [colaboradores, setColaboradores] = React.useState([]);
     const navegarPara = useNavigate();
 
@@ -15,7 +15,7 @@ const Colaboradores = ({ obterColaboradores, deletarColaborador }) => {
             const { erro, statusCode, data } = await obterColaboradores.handler();
 
             if (erro && statusCode === 401) {
-                setEhAutenticado("");
+                limparSessao();
                 return navegarPara("/login");
                 //TODO:mensagem: você não está logado
             }
@@ -32,7 +32,7 @@ const Colaboradores = ({ obterColaboradores, deletarColaborador }) => {
         const { erro, statusCode, data } = await deletarColaborador.handler(colaboradorId);
 
         if (erro && statusCode === 401) {
-            setEhAutenticado("");
+            limparSessao();
             return navegarPara("/login");
             //TODO:mensagem: você não está logado
         }
@@ -44,13 +44,12 @@ const Colaboradores = ({ obterColaboradores, deletarColaborador }) => {
     };
 
     const handlerAlterar = (colaboradorId) => {
-        navegarPara(`/colaborador/editar/${colaboradorId}`);
-        console.log("ir para editar", colaboradorId);
+        navegarPara(`/app/colaborador/alterar/${colaboradorId}`);
     };
 
     return (
         <>
-            <section className={`${styles.colaboradores} conteudo`}>
+            <section className={`conteudo`}>
                 <TituloPagina tituloPagina="Colaboradores" />
                 <ul className={`${styles.itensLista} animarFadeInDeCima`}>
                     {colaboradores.length > 0 && colaboradores.map((colaborador) => (

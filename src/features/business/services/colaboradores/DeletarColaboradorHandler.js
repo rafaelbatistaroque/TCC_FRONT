@@ -26,18 +26,7 @@ export class DeletarColaboradorHandler extends DeletarColaborador {
                 data: erros,
             };
         }
-        console.log("handler id", colaboradorId);
-        const resposta = await this.#httpServico?.delete(this.#url, colaboradorId);
 
-        if (resposta.statusCode === 401)
-            return {
-                naoAutorizado: true,
-                mensagem: "Requisição não autorizada!"
-            };
-
-        if (resposta.erro === false)
-            return resposta.data;
-
-        return resposta;
+        return await this.#httpServico?.delete(`${this.#url}${colaboradorId}`);
     }
 }

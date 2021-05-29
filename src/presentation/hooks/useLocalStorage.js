@@ -1,17 +1,17 @@
 import React from "react";
 
 const useLocalStorage = (chave, valorInicial) => {
-	const [state, setState] = React.useState(() => {
-		const local = window.localStorage.getItem(chave);
+    const [state, setState] = React.useState(() => {
+        const local = window.localStorage.getItem(chave);
 
-		return local ? local : valorInicial;
-	});
+        return local ? local : valorInicial;
+    });
 
-	React.useEffect(() => {
-		window.localStorage.setItem(chave, state);
-	}, [chave, state]);
+    React.useEffect(() => {
+        window.localStorage.setItem(chave, state);
+    }, [chave, state]);
 
-	return [state, setState];
+    return [state, setState];
 };
 
 export default useLocalStorage;

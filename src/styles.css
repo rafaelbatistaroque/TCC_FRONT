@@ -57,6 +57,7 @@ a {
 
 .container {
 	max-width: 90rem;
+	min-width: 60rem;
 	padding: 0 8rem;
 	margin: 0 auto;
 }

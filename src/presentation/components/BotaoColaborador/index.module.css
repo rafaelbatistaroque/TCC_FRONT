@@ -5,3 +5,7 @@
 [finalidade="btnDeletar"]{
     background: var(--cor-erro);
 }
+
+[finalidade="btnNavegar"]{
+    background: var(--cor-clara);
+}

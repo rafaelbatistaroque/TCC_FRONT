@@ -1,11 +1,12 @@
 .container {
-  background: tomato;
+  background: #cf5b4c;
   padding: 1rem;
   min-height: 2rem;
   width: 100%;
 }
 
 .textoMensagem {
+  font-family: var(--font-principal-sem-serifa);
   display: block;
   text-align: center;
   color: var(--cor-clara);

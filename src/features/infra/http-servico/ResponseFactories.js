@@ -1,3 +1,5 @@
+import TEXTOS from "../../../utils/textosInformativos";
+
 export default class Response {
     #statusCode;
     #erro;
@@ -9,17 +11,15 @@ export default class Response {
         this.#data = data;
     }
 
-    static unauthorized(data) {
-        return {
-            erro: true,
-            statusCode: 401
-        };
+    static unauthorized(promise) {
+        return promise.status === 401;
     }
 
     static criar(promise, data) {
 
         const errosDeResponse = {
-            400: new Response(400, true, data.erros),
+            401: new Response(401, true, TEXTOS.NAO_AUTORIZADA),
+            400: new Response(400, true, data?.erros),
             500: new Response(500, true),
             200: new Response(200, false, data)
         };

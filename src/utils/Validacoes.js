@@ -1,91 +1,91 @@
 export default class Validacoes {
-  #erros;
-  #TIPOS = {
-    boolean: "boolean",
-  };
+    #erros;
+    #TIPOS = {
+        boolean: "boolean",
+    };
 
-  constructor() {
-    this.#erros = [];
-  }
+    constructor() {
+        this.#erros = [];
+    }
 
-  EhRequerido(valor, mensagem) {
-    if (valor === null || valor === undefined || valor.length <= 0) this.#erros.push({ id: gerarId(), mensagem });
+    EhRequerido(valor, mensagem) {
+        if (valor === null || valor === undefined || valor.length <= 0) this.#erros.push({ id: gerarId(), mensagem });
 
-    return this;
-  }
+        return this;
+    }
 
-  EhMenorQue(valor, min, mensagem) {
-    if (!valor || valor.length < min) this.#erros.push({ id: gerarId(), mensagem });
+    EhMenorQue(valor, min, mensagem) {
+        if (!valor || valor.length < min) this.#erros.push({ id: gerarId(), mensagem });
 
-    return this;
-  }
+        return this;
+    }
 
-  EhMaiorQue(valor, max, mensagem) {
-    if (!valor || valor.length > max) this.#erros.push({ id: gerarId(), mensagem });
+    EhMaiorQue(valor, max, mensagem) {
+        if (!valor || valor.length > max) this.#erros.push({ id: gerarId(), mensagem });
 
-    return this;
-  }
+        return this;
+    }
 
-  DeveSerIgual(valor, len, mensagem) {
-    if (valor.length !== len) this.#erros.push({ id: gerarId(), mensagem });
+    DeveSerIgual(valor, len, mensagem) {
+        if (valor.length !== len) this.#erros.push({ id: gerarId(), mensagem });
 
-    return this;
-  }
+        return this;
+    }
 
-  EhMail(valor, mensagem) {
-    let reg = new RegExp(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
-    if (!reg.test(valor)) this.#erros.push({ id: gerarId(), mensagem });
+    EhMail(valor, mensagem) {
+        let reg = new RegExp(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
+        if (!reg.test(valor)) this.#erros.push({ id: gerarId(), mensagem });
 
-    return this;
-  }
+        return this;
+    }
 
-  AdicionarErro(mensagem) {
-    this.#erros.push({ id: gerarId(), mensagem });
+    AdicionarErro(mensagem) {
+        this.#erros.push({ id: gerarId(), mensagem });
 
-    return this;
-  }
+        return this;
+    }
 
-  NaoEhNumero(valor, mensagem) {
-    if (!Number.isInteger(valor)) this.#erros.push({ id: gerarId(), mensagem });
+    NaoEhNumero(valor, mensagem) {
+        if (!Number.isInteger(valor)) this.#erros.push({ id: gerarId(), mensagem });
 
-    return this;
-  }
+        return this;
+    }
 
-  EhTipoData(data, mensagem) {
-    if (Number.isNaN(Date.parse(data))) this.#erros.push({ id: gerarId(), mensagem });
+    EhTipoData(data, mensagem) {
+        if (Number.isNaN(Date.parse(data))) this.#erros.push({ id: gerarId(), mensagem });
 
-    return this;
-  }
+        return this;
+    }
 
-  EhTipoBoolean(data, mensagem) {
-    if (typeof data !== this.#TIPOS.boolean) this.#erros.push({ id: gerarId(), mensagem });
+    EhTipoBoolean(data, mensagem) {
+        if (typeof data !== this.#TIPOS.boolean) this.#erros.push({ id: gerarId(), mensagem });
 
-    return this;
-  }
+        return this;
+    }
 
-  EhDataPassado(data, mensagem) {
-    if (new Date(data) < new Date(new Date().setHours(-4, 0, 0, 0))) this.#erros.push({ id: gerarId(), mensagem });
+    EhDataPassado(data, mensagem) {
+        if (new Date(data) < new Date(new Date().setHours(-4, 0, 0, 0))) this.#erros.push({ id: gerarId(), mensagem });
 
-    return this;
-  }
+        return this;
+    }
 
-  get Erros() {
-    return this.#erros.map(x => x.mensagem);
-  }
+    get Erros() {
+        return this.#erros.map(x => x.mensagem);
+    }
 
-  LimparErros() {
-    this.#erros = [];
+    LimparErros() {
+        this.#erros = [];
 
-    return this;
-  }
+        return this;
+    }
 
-  get EhValido() {
-    return this.#erros.length === 0;
-  }
+    get EhValido() {
+        return this.#erros.length === 0;
+    }
 
-  get EhInvalido() {
-    return this.#erros.length > 0;
-  }
+    get EhInvalido() {
+        return this.#erros.length > 0;
+    }
 }
 
 const gerarId = () => Math.floor(Math.random() * 1000) + 1;

@@ -8,72 +8,72 @@ import useForm from "../../hooks/useForm";
 import styles from "./index.module.css";
 
 const Login = ({ autenticar }) => {
-  const [mensagensErro, setMensagensErro] = React.useState([]);
-  const { setEhAutenticado, setPerfilTipo, setUsuarioNome } =
-    React.useContext(PerfilContext);
-  const usuario = useForm();
-  const senha = useForm();
-  const navegarPara = useNavigate();
+    const [mensagensErro, setMensagensErro] = React.useState([]);
+    const { setEhAutenticado, setPerfilTipo, setUsuarioNome } = React.useContext(PerfilContext);
+    const usuario = useForm();
+    const senha = useForm();
+    const navegarPara = useNavigate();
 
-  React.useEffect(() => {
-    limparCampos();
-  }, []);
+    React.useEffect(() => {
+        limparCampos();
+    }, []);
 
-  async function handlerClique() {
-    limparMensagemErro();
-    const resposta = await autenticar.handler(usuario.valor, senha.valor);
+    async function handlerClique() {
+        limparMensagemErro();
+        const { erro, data } = await autenticar.handler(usuario.valor, senha.valor);
 
-    if (resposta.erro) return setMensagensErro([...resposta.data]);
+        if (erro)
+            return setMensagensErro([...data]);
 
-    limparCampos();
-    atribuirRespostaNoContexto(resposta.data);
-    navegarPara("/colaborador");
-  }
+        limparCampos();
+        atribuirRespostaNoContexto(data);
+        navegarPara("/colaborador/listar");
+    }
 
-  function limparMensagemErro() {
-    setMensagensErro([]);
-  }
+    function limparMensagemErro() {
+        setMensagensErro([]);
+    }
 
-  function limparCampos() {
-    usuario.setValor("");
-    senha.setValor("");
-  }
+    function limparCampos() {
+        usuario.setValor("");
+        senha.setValor("");
+    }
 
-  function atribuirRespostaNoContexto(resposta) {
-    setEhAutenticado(resposta.token);
-    setPerfilTipo(resposta.perfilId === 1);
-    setUsuarioNome(resposta.nomeUsuario);
-  }
+    function atribuirRespostaNoContexto(resposta) {
+        setEhAutenticado(resposta.token);
+        setPerfilTipo(resposta.perfilId === 1);
+        setUsuarioNome(resposta.nomeUsuario);
+    }
 
-  return (
-    <section className={styles.background}>
-      <div className={`${styles.formLogin} animarFadeInDeCima`}>
-        <div className={styles.grupoInputs}>
-          <Input
-            onFocus={limparMensagemErro}
-            placeholder="Identificação"
-            requirido={true}
-            {...usuario}
-          />
-          <Input
-            onFocus={limparMensagemErro}
-            placeholder="Senha"
-            tipoInput="password"
-            requirido={true}
-            {...senha}
-          />
-        </div>
-        {mensagensErro.length > 0 && (
-          <CaixaMensagem textoMensagem={mensagensErro} />
-        )}
-        <Button
-          tipoButton="button"
-          tituloBotao="Entrar"
-          onClick={handlerClique}
-        />
-      </div>
-    </section>
-  );
+    return (
+        <section className={styles.background}>
+            <div className={`${styles.formLogin} animarFadeInDeCima`}>
+                <div className={styles.grupoInputs}>
+                    <Input
+                        onFocus={limparMensagemErro}
+                        placeholder="Identificação"
+                        requirido={true}
+                        {...usuario}
+                    />
+                    <Input
+                        onFocus={limparMensagemErro}
+                        placeholder="Senha"
+                        tipoInput="password"
+                        requirido={true}
+                        {...senha}
+                    />
+                </div>
+                {mensagensErro.length > 0 && (
+                    <CaixaMensagem textoMensagem={mensagensErro} />
+                )}
+                <Button
+                    tipoButton="button"
+                    tituloBotao="Entrar"
+                    onClick={handlerClique}
+                />
+            </div>
+        </section>
+    );
 };
 
 export default Login;

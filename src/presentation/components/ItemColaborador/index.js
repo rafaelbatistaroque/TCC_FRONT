@@ -2,7 +2,9 @@ import React from 'react';
 import BotaoColaborador from '../BotaoColaborador';
 import styles from './index.module.css';
 
-const ItemColaborador = ({ colaboradorId, nomeCompleto, numeroCPF, funcaoNome, deletarColaborador }) => {
+const ItemColaborador = ({ colaborador, deletarColaborador, alterarColaborador }) => {
+
+    const { id, numeroCPF, nomeCompleto, funcaoNome } = colaborador;
 
     return (<div className={styles.containerItemLista}>
         <li className={styles.itemLista}>
@@ -12,8 +14,9 @@ const ItemColaborador = ({ colaboradorId, nomeCompleto, numeroCPF, funcaoNome, d
             </div>
             <span className={styles.funcaoNome}>{funcaoNome}</span>
         </li>
-        <BotaoColaborador ehEditar={true} onClick={() => console.log("editou")} />
-        <BotaoColaborador onClick={() => deletarColaborador({ colaboradorId })} />
+        <BotaoColaborador finalidade={0} onClick={() => console.log("navegar")} />
+        <BotaoColaborador finalidade={1} onClick={() => alterarColaborador(id)} />
+        <BotaoColaborador finalidade={2} onClick={() => deletarColaborador(id)} />
     </div>
     );
 

@@ -1,7 +1,8 @@
 const API = {
-	autenticacao: "https://localhost:5001/api/v1/autenticacao",
-	obterColaboradores: "https://localhost:5001/api/v1/colaborador",
-	deletarColaborador: "https://localhost:5001/api/v1/colaborador/",
+    autenticacao: "https://localhost:5001/api/v1/autenticacao",
+    obterColaboradores: "https://localhost:5001/api/v1/colaborador",
+    deletarColaborador: "https://localhost:5001/api/v1/colaborador/",
+    editarColaborador: "https://localhost:5001/api/v1/colaborador"
 };
 
 export default API;

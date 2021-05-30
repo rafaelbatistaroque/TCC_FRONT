@@ -1,4 +1,4 @@
-import TEXTOS from "../../../utils/textosInformativos";
+import { TEXTOS } from "../../../utils/constantes";
 
 export default class Response {
     #statusCode;
@@ -9,10 +9,6 @@ export default class Response {
         this.#statusCode = statusCode;
         this.#erro = erro;
         this.#data = data;
-    }
-
-    static unauthorized(promise) {
-        return promise.status === 401;
     }
 
     static criar(promise, data) {

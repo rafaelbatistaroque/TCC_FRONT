@@ -21,7 +21,7 @@ const Login = ({ autenticar }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    async function handlerClique() {
+    const handlerClique = async () => {
         limparMensagemErro();
         const { erro, data } = await autenticar.handler(usuario.valor, senha.valor);
 
@@ -31,7 +31,7 @@ const Login = ({ autenticar }) => {
         limparCampos();
         salvarSessao(data);
         navegarPara("/app");
-    }
+    };
 
     function limparMensagemErro() {
         setMensagensErro([]);
@@ -45,7 +45,7 @@ const Login = ({ autenticar }) => {
     return (
         <section className={styles.background}>
             <div className={`${styles.formLogin} animarFadeInDeCima`}>
-                <div className={styles.grupoInputs}>
+                <div className={styles.grupoInputs} onKeyPress={({ key }) => key === "Enter" && handlerClique()}>
                     <Input
                         onFocus={limparMensagemErro}
                         placeholder="Identificação"

@@ -1,4 +1,4 @@
-import TEXTOS from "../../../../utils/textosInformativos";
+import { TEXTOS } from "../../../../utils/constantes";
 import DeletarColaborador from "../../../domain/casos-de-uso/colaboradores/DeletarColaborador";
 
 export default class DeletarColaboradorHandler extends DeletarColaborador {

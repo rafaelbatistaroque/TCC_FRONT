@@ -1,6 +1,6 @@
 import { TEXTOS } from "../../../../utils/constantes";
 
-export default class DeletarColaborador {
+export default class CriarColaborador {
     handler() {
         throw new Error(TEXTOS.NAO_IMPLEMENTADO);
     }

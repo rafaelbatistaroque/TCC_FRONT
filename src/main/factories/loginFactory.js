@@ -5,18 +5,18 @@ import API from "../../utils/urlApi";
 import Validacoes from "../../utils/Validacoes";
 
 const loginFactory = () => {
-  const url = API.autenticacao;
-  const httpServico = new HttpFetchServico();
-  const validacoes = new Validacoes();
-  const autenticacao = new AutenticarUsuarioHandler(
-    url,
-    { httpServico },
-    validacoes
-  );
+    const url = `${API.urlBase}${API.altenticacao}`;
+    const httpServico = new HttpFetchServico();
+    const validacoes = new Validacoes();
+    const autenticacao = new AutenticarUsuarioHandler(
+        url,
+        { httpServico },
+        validacoes
+    );
 
-  return {
-    build: () => <Login autenticar={autenticacao} />,
-  };
+    return {
+        build: () => <Login autenticar={autenticacao} />,
+    };
 };
 
 export default loginFactory;

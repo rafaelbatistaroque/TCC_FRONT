@@ -1,4 +1,4 @@
-import TEXTOS from "../../../../utils/textosInformativos";
+import { TEXTOS } from "../../../../utils/constantes";
 import AutenticarUsuario from "../../../domain/casos-de-uso/autenticacao/AutenticarUsuario";
 
 export default class AutenticarUsuarioHandler extends AutenticarUsuario {
@@ -16,21 +16,29 @@ export default class AutenticarUsuarioHandler extends AutenticarUsuario {
 
     async handler(usuarioIdentificacao, usuarioSenha) {
 
+        const { erro, data } = this.validar({ usuarioIdentificacao, usuarioSenha });
+
+        if (erro)
+            return data;
+
+        const resposta = await this.#httpServico?.post(this.#url, { usuarioIdentificacao, usuarioSenha });
+
+        return resposta;
+    }
+
+    validar({ usuarioIdentificacao, usuarioSenha }) {
+
         this.#validacoes
             .EhRequerido(usuarioIdentificacao, TEXTOS.USUARIO_NULO_VAZIO)
             .EhRequerido(usuarioSenha, TEXTOS.SENHA_NULA_VAZIA);
 
-        if (this.#validacoes.EhInvalido) {
-            const erros = this.#validacoes.Erros;
-            this.#validacoes.LimparErros();
+        const validacao = {
+            erro: this.#validacoes.EhInvalido,
+            data: this.#validacoes.Erros,
+        };
 
-            return {
-                erro: true,
-                data: erros,
-            };
-        }
+        this.#validacoes.LimparErros();
 
-        const resposta = await this.#httpServico?.post(this.#url, { usuarioIdentificacao, usuarioSenha });
-        return resposta;
+        return validacao;
     }
 }

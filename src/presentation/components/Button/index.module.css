@@ -1,13 +1,30 @@
 .button {
     padding: 0.5rem 1.5rem;
-    width: 100%;
     font-size: 1.5rem;
-    text-transform: uppercase;
 }
 
-.button:hover,
-.button:active {
+.buttonEnfase{
+    background: var(--cor-primaria);
+    color: var(--cor-clara);
+}
+
+.buttonEnfase:hover,
+.buttonEnfase:active {
     border: var(--borda-padrao);
     color: var(--cor-escura);
     background: transparent;
 }
+
+.buttonNormal{
+    background: transparent;
+    color: var(--cor-escura);
+    border: var(--borda-padrao);
+}
+
+.buttonNormal:hover,
+.buttonNormal:active {
+    border: var(--borda-secundaria);
+    color: var(--cor-clara);
+    background: var(--cor-primaria);
+}
+

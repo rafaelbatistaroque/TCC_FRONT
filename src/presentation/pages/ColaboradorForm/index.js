@@ -10,6 +10,8 @@ import useForm from '../../hooks/useForm';
 import styles from './index.module.css';
 
 const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarColaborador }) => {
+    const TELA_COLABORADOR_LISTA = "/app/colaborador/listar";
+    const TELA_LOGIN = "/login";
 
     const { limparSessao } = React.useContext(PerfilContext);
     const navegarPara = useNavigate();
@@ -25,14 +27,15 @@ const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarColaborado
             return;
 
         handlerObterColaborador(id);
-    });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const handlerObterColaborador = async (id) => {
         const { erro, data, statusCode } = await obterColaborador.handler(id);
 
         if (erro && statusCode === 401) {
             limparSessao();
-            return navegarPara("/login");
+            return navegarPara(TELA_LOGIN);
             //TODO:mensagem: você não está logado
         }
 
@@ -67,7 +70,7 @@ const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarColaborado
 
         if (erro && statusCode === 401) {
             limparSessao();
-            return navegarPara("/login");
+            return navegarPara(TELA_LOGIN);
             //TODO:mensagem: você não está logado
         }
 
@@ -75,7 +78,11 @@ const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarColaborado
             return console.log("erros", data);
 
         limparCamposFormulario();
-        navegarPara("/app/colaborador/listar");
+        navegarPara(TELA_COLABORADOR_LISTA);
+    };
+
+    const handlerCancelar = () => {
+        navegarPara(TELA_COLABORADOR_LISTA);
     };
 
     return (<>
@@ -87,7 +94,10 @@ const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarColaborado
                 <Input placeholder="Sobrenome" requirido={false} {...sobrenomeForm} />
                 <Input placeholder="CPF" disabled={true} valor={cpfForm.valor} />
                 <Select opcoes={FUNCOES_COLABORADOR} {...funcaoForm} />
-                <Button tipoButton="button" tituloBotao="Salvar" onClick={funcaoSelecionada} />
+                <div className={styles.grupoBotoes}>
+                    <Button estiloEnfase={true} tipoButton="button" tituloBotao="Cancelar" onClick={handlerCancelar} />
+                    <Button estiloEnfase={false} tipoButton="button" tituloBotao="Salvar" onClick={funcaoSelecionada} />
+                </div>
             </form>
         </section></>);
 };

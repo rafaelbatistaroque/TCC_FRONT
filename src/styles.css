@@ -1,8 +1,8 @@
 :root {
-	--cor-primaria: #2a0273;
+	--cor-primaria: #0D115D;
 	--cor-secundaria: #575fff;
 	--cor-enfase: #60d16f;
-	--cor-erro: #e65757;
+	--cor-erro: #B42121;
 	--cor-clara: #eeeeee;
 	--cor-escura: #333;
 	--cor-cinza: #575757;
@@ -43,13 +43,13 @@ img {
 
 button {
 	display: block;
-    width: 4.5rem;
+    width: 100%;
     outline: none;
     cursor: pointer;
     color: var(--cor-clara);
     background: var(--cor-primaria);
     border: var(--borda-secundaria);
-	font-size: 1rem;
+    text-transform: uppercase;
     letter-spacing: 0.08rem;
     text-align: center;
 	font-family: var(--font-principal-sem-serifa);

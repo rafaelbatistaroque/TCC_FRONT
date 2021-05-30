@@ -16,7 +16,7 @@ export default class AlterarColaboradorHandler extends AlterarColaborador {
     }
 
     async handler(id, primeiroNome, sobrenome, perfilId) {
-        const colaborador = Colaborador.criar(id, primeiroNome, sobrenome, perfilId);
+        const colaborador = Colaborador.criar(id, primeiroNome, sobrenome, Number.parseInt(perfilId));
 
         const { erro, data } = this.validar(colaborador);
 

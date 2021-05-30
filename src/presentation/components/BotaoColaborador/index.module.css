@@ -1,5 +1,6 @@
 .botaoColaboradores{
     border: var(--borda-padrao);
+    width: 4.5rem;
 }
 
 [finalidade="btnEditar"]{

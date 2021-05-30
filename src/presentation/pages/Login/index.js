@@ -16,58 +16,44 @@ const Login = ({ autenticar }) => {
     const navegarPara = useNavigate();
 
     React.useEffect(() => {
-        limparCampos();
         limparMensagemErro();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    const limparMensagemErro = () => {
+        setMensagensErro([]);
+    };
+
+    const limparCampos = () => {
+        usuario.setValor("");
+        senha.setValor("");
+    };
 
     const handlerClique = async () => {
         limparMensagemErro();
         const { erro, data } = await autenticar.handler(usuario.valor, senha.valor);
 
-        if (erro)
+        if (erro) {
+            limparCampos();
             return setMensagensErro([...data]);
+        }
 
         limparCampos();
         salvarSessao(data);
         navegarPara("/app");
     };
 
-    function limparMensagemErro() {
-        setMensagensErro([]);
-    }
-
-    function limparCampos() {
-        usuario.setValor("");
-        senha.setValor("");
-    }
 
     return (
         <section className={styles.background}>
             <div className={`${styles.formLogin} animarFadeInDeCima`}>
                 <div className={styles.grupoInputs} onKeyPress={({ key }) => key === "Enter" && handlerClique()}>
-                    <Input
-                        onFocus={limparMensagemErro}
-                        placeholder="Identificação"
-                        requirido={true}
-                        {...usuario}
-                    />
-                    <Input
-                        onFocus={limparMensagemErro}
-                        placeholder="Senha"
-                        tipoInput="password"
-                        requirido={true}
-                        {...senha}
-                    />
+                    <Input onFocus={limparMensagemErro} placeholder="Identificação" requirido={true} {...usuario} />
+                    <Input onFocus={limparMensagemErro} placeholder="Senha" tipoInput="password" requirido={true} {...senha} />
                 </div>
                 {mensagensErro.length > 0 && (
                     <CaixaMensagem textoMensagem={mensagensErro} />
                 )}
-                <Button
-                    tipoButton="button"
-                    tituloBotao="Entrar"
-                    onClick={handlerClique}
-                />
+                <Button tipoButton="button" tituloBotao="Entrar" onClick={handlerClique} />
             </div>
         </section>
     );

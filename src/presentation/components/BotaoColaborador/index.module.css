@@ -1,11 +1,18 @@
+.botaoColaboradores{
+    border: var(--borda-padrao);
+}
+
 [finalidade="btnEditar"]{
     background: url("../../Assets/editar_colaborador_icon.svg") no-repeat 50% / 40%;
+    background-color: var(--cor-clara);
 }
 
 [finalidade="btnDeletar"]{
-    background: url("../../Assets/deletar_colaborador_icon.svg") no-repeat 50%;
+    background: url("../../Assets/deletar_colaborador_icon.svg") no-repeat 50% / 40%;
+    background-color: var(--cor-clara);
 }
 
 [finalidade="btnNavegar"]{
-    background: url("../../Assets/ir_documento_icon.svg") no-repeat 50%;
+    background: url("../../Assets/ir_documento_icon.svg") no-repeat 50% / 40%;
+    background-color: var(--cor-clara);
 }

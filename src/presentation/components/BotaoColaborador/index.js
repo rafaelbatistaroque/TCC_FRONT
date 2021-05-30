@@ -7,7 +7,7 @@ const BotaoColaborador = ({ finalidade = 0, onClick }) => {
     if (finalidade in classesFinalidades === false)
         finalidade = 0;
 
-    return <button finalidade={classesFinalidades[finalidade]} className={styles.botao} onClick={onClick}></button>;
+    return <button finalidade={classesFinalidades[finalidade]} className={styles.botaoColaboradores} onClick={onClick}></button>;
 };
 
 export default BotaoColaborador;

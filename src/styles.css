@@ -3,12 +3,13 @@
 	--cor-secundaria: #575fff;
 	--cor-enfase: #60d16f;
 	--cor-erro: #e65757;
-	--cor-clara: #f8f8f8;
+	--cor-clara: #eeeeee;
 	--cor-escura: #333;
 	--cor-cinza: #575757;
 	--font-principal-sem-serifa: Poppins, Helvetica, Arial, sans-serif;
 	--font_secundaria-serifada: "Spectral", Georgia;
 	--borda-padrao: 3px solid var(--cor-escura);
+	--borda-secundaria: 3px solid var(--cor-primaria);
 }
 
 * {
@@ -45,8 +46,12 @@ button {
     width: 4.5rem;
     outline: none;
     cursor: pointer;
-    border: var(--borda-padrao);
+    color: var(--cor-clara);
+    background: var(--cor-primaria);
+    border: var(--borda-secundaria);
 	font-size: 1rem;
+    letter-spacing: 0.08rem;
+    text-align: center;
 	font-family: var(--font-principal-sem-serifa);
 }
 

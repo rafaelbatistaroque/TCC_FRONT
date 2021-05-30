@@ -16,10 +16,10 @@ export default class AutenticarUsuarioHandler extends AutenticarUsuario {
 
     async handler(usuarioIdentificacao, usuarioSenha) {
 
-        const { erro, data } = this.validar({ usuarioIdentificacao, usuarioSenha });
+        const validacao = this.validar({ usuarioIdentificacao, usuarioSenha });
 
-        if (erro)
-            return data;
+        if (validacao.erro)
+            return validacao;
 
         const resposta = await this.#httpServico?.post(this.#url, { usuarioIdentificacao, usuarioSenha });
 

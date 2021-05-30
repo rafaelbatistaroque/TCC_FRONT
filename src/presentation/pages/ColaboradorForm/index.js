@@ -25,7 +25,7 @@ const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarColaborado
             return;
 
         handlerObterColaborador(id);
-    }, []);
+    });
 
     const handlerObterColaborador = async (id) => {
         const { erro, data, statusCode } = await obterColaborador.handler(id);

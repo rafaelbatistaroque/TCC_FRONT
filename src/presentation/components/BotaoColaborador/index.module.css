@@ -1,11 +1,11 @@
 [finalidade="btnEditar"]{
-    background: transparent;
+    background: url("../../Assets/editar_colaborador_icon.svg") no-repeat 50% / 40%;
 }
 
 [finalidade="btnDeletar"]{
-    background: var(--cor-erro);
+    background: url("../../Assets/deletar_colaborador_icon.svg") no-repeat 50%;
 }
 
 [finalidade="btnNavegar"]{
-    background: var(--cor-clara);
+    background: url("../../Assets/ir_documento_icon.svg") no-repeat 50%;
 }

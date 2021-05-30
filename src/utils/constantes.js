@@ -1,4 +1,4 @@
-const TEXTOS = {
+export const TEXTOS = {
     NAO_IMPLEMENTADO: "Método não implementado.",
     USUARIO_NULO_VAZIO: "Usuário não pode ser nulo ou vazio.",
     SENHA_NULA_VAZIA: "Senha não pode ser nulo ou vazio.",
@@ -7,4 +7,11 @@ const TEXTOS = {
     PARAMETRO_INVALIDO: "Parametros inválidos."
 };
 
-export default TEXTOS;
+export const FUNCOES_COLABORADOR = [
+    { id: 1, item: "Gerente" },
+    { id: 2, item: "Auxiliar Administrativo" },
+    { id: 3, item: "Auxiliar de Escritório" },
+    { id: 4, item: "Programador" },
+    { id: 5, item: "Servicos Gerais" },
+];
+

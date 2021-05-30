@@ -11,22 +11,24 @@ const Colaboradores = ({ obterColaboradores, deletarColaborador }) => {
     const navegarPara = useNavigate();
 
     React.useEffect(() => {
-        (async () => {
-            const { erro, statusCode, data } = await obterColaboradores.handler();
-
-            if (erro && statusCode === 401) {
-                limparSessao();
-                return navegarPara("/login");
-                //TODO:mensagem: você não está logado
-            }
-
-            if (erro) //TODO: tratar erros diversos
-                return console.log("erros", data);
-
-            setColaboradores(data.colaboradores);
-        })();
+        handlerObterColaboradores();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    const handlerObterColaboradores = async () => {
+        const { erro, statusCode, data } = await obterColaboradores.handler();
+
+        if (erro && statusCode === 401) {
+            limparSessao();
+            return navegarPara("/login");
+            //TODO:mensagem: você não está logado
+        }
+
+        if (erro) //TODO: tratar erros diversos
+            return console.log("erros", data);
+
+        setColaboradores(data.colaboradores);
+    };
 
     const handlerDeletar = async (colaboradorId) => {
         const { erro, statusCode, data } = await deletarColaborador.handler(colaboradorId);

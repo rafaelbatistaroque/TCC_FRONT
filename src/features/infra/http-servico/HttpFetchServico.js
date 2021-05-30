@@ -25,6 +25,15 @@ export default class HttpFetchServico extends HttpServico {
 
         const promise = await fetch(url, options);
 
+        const json = await promise.json().catch(() => null);
+        let { obterResponse } = Response.criar(promise, json);
+        return obterResponse;
+    }
+
+    async put(url, body) {
+        const { options } = Requisicao.criarPut(this.#token, body);
+
+        const promise = await fetch(url, options);
 
         const json = await promise.json().catch(() => null);
         let { obterResponse } = Response.criar(promise, json);
@@ -35,7 +44,6 @@ export default class HttpFetchServico extends HttpServico {
         const { options } = Requisicao.criarDelete(this.#token);
 
         const promise = await fetch(url, options);
-
 
         const json = await promise.json().catch(() => null);
         let { obterResponse } = Response.criar(promise, json);

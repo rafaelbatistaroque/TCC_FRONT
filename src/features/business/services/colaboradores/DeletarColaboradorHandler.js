@@ -1,7 +1,7 @@
 import TEXTOS from "../../../../utils/textosInformativos";
 import DeletarColaborador from "../../../domain/casos-de-uso/colaboradores/DeletarColaborador";
 
-export class DeletarColaboradorHandler extends DeletarColaborador {
+export default class DeletarColaboradorHandler extends DeletarColaborador {
     #url;
     #httpServico;
     #validacoes;

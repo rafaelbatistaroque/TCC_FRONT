@@ -17,6 +17,8 @@ const Login = ({ autenticar }) => {
 
     React.useEffect(() => {
         limparCampos();
+        limparMensagemErro();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     async function handlerClique() {
@@ -28,7 +30,6 @@ const Login = ({ autenticar }) => {
 
         limparCampos();
         salvarSessao(data);
-        // atribuirRespostaNoContexto(data);
         navegarPara("/app");
     }
 

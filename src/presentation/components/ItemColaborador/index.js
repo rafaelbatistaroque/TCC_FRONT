@@ -4,12 +4,12 @@ import styles from './index.module.css';
 
 const ItemColaborador = ({ colaborador, deletarColaborador, alterarColaborador }) => {
 
-    const { id, numeroCPF, nomeCompleto, funcaoNome } = colaborador;
+    const { id, numeroCPF, primeiroNome, sobrenome, funcaoNome } = colaborador;
 
     return (<div className={styles.containerItemLista}>
         <li className={styles.itemLista}>
             <div className={styles.institucional}>
-                <span className={styles.nomeCompleto}>{nomeCompleto}</span>
+                <span className={styles.nomeCompleto}>{`${primeiroNome} ${sobrenome}`}</span>
                 <span className={styles.numeroCPF}>{numeroCPF}</span>
             </div>
             <span className={styles.funcaoNome}>{funcaoNome}</span>

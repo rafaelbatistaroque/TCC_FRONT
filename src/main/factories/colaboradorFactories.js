@@ -8,6 +8,7 @@ import ColaboradorForm from "../../presentation/pages/ColaboradorForm";
 import API from "../../utils/urlApi";
 import Validacoes from "../../utils/Validacoes";
 import ObterColaboradorhandler from "../../features/business/services/colaboradores/ObterColaboradorHandler";
+import Colaborador from "../../features/domain/entidades/Colaborador";
 
 const criarDependencias = (token) => {
     const validacoes = new Validacoes();
@@ -21,7 +22,9 @@ const criarDependencias = (token) => {
 const deletarColaboradorFactory = (token) => {
     const url = `${API.urlBase}${API.colaborador}/`;
     const { validacoes, httpServico } = criarDependencias(token);
+
     const deletarColaboradores = new DeletarColaboradorHandler(url, { httpServico }, validacoes);
+
     return {
         build: () => deletarColaboradores,
     };
@@ -30,22 +33,27 @@ const deletarColaboradorFactory = (token) => {
 export const colaboradorFormFactory = (token) => {
     const url = `${API.urlBase}${API.colaborador}/`;
     const { validacoes, httpServico } = criarDependencias(token);
+
     const alterarColaborador = new AlterarColaboradorHandler(url, { httpServico }, validacoes);
     const obterColaborador = new ObterColaboradorhandler(url, { httpServico }, validacoes);
     const criarColaborador = new CriarColaboradorHandler(url, { httpServico }, validacoes);
+    const colaboradorEntidade = new Colaborador();
 
     return {
         build: () => <ColaboradorForm
             alterarColaborador={alterarColaborador}
             obterColaborador={obterColaborador}
-            criarColaborador={criarColaborador} />
+            criarColaborador={criarColaborador}
+            colaboradorEntidade={colaboradorEntidade} />
     };
 };
 
 export const obterColaboradoresFactory = (token) => {
     const url = `${API.urlBase}${API.colaborador}`;
     const { httpServico } = criarDependencias(token);
+
     const obterColaboradores = new ObterColaboradoresHandler(url, { httpServico });
+
     return {
         build: () => <Colaboradores
             obterColaboradores={obterColaboradores}

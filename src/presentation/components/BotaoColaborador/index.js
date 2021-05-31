@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './index.module.css';
 
 const BotaoColaborador = ({ finalidade = 0, onClick }) => {
-    const classesFinalidades = ["btnNavegar", "btnEditar", "btnDeletar"];
+    const classesFinalidades = ["btnNavegar", "btnEditar", "btnDeletar", "btnNovo"];
 
     if (finalidade in classesFinalidades === false)
         finalidade = 0;

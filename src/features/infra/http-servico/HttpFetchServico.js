@@ -11,7 +11,7 @@ export default class HttpFetchServico extends HttpServico {
     }
 
     async post(url, body) {
-        const { options } = Requisicao.criarPost(body);
+        const { options } = Requisicao.criarPost(body, this.#token);
 
         const promise = await fetch(url, options);
 
@@ -31,7 +31,7 @@ export default class HttpFetchServico extends HttpServico {
     }
 
     async put(url, body) {
-        const { options } = Requisicao.criarPut(this.#token, body);
+        const { options } = Requisicao.criarPut(body, this.#token);
 
         const promise = await fetch(url, options);
 

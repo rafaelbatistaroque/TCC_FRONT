@@ -15,3 +15,10 @@ export const FUNCOES_COLABORADOR = [
     { id: 5, item: "Servicos Gerais" },
 ];
 
+export const NAVEGACAO = {
+    TELA_LOGIN: "/login",
+    TELA_APP: "/app",
+    TELA_COLABORADORES: "/app/colaborador/listar",
+    TELA_COLABORADOR_ALTERAR: "/app/colaborador/alterar/",
+    TELA_COLABORADOR_CRIAR: "/app/colaborador/criar/",
+};

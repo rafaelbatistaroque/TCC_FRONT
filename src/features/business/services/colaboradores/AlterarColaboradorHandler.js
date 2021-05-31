@@ -1,6 +1,5 @@
 import { TEXTOS } from "../../../../utils/constantes";
 import AlterarColaborador from "../../../domain/casos-de-uso/colaboradores/AlterarColaborador";
-import Colaborador from "../../../domain/entidades/Colaborador";
 
 export default class AlterarColaboradorHandler extends AlterarColaborador {
     #url;
@@ -15,9 +14,7 @@ export default class AlterarColaboradorHandler extends AlterarColaborador {
         this.#validacoes = validacoes;
     }
 
-    async handler(id, primeiroNome, sobrenome, perfilId) {
-        const colaborador = Colaborador.criar(id, primeiroNome, sobrenome, Number.parseInt(perfilId));
-
+    async handler(colaborador) {
         const { erro, data } = this.validar(colaborador);
 
         if (erro)

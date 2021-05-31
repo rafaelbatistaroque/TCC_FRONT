@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./index.module.css";
 
-const Input = ({ label, placeholder, tipoInput = "text", valor, nomeInput, requirido = false, onChange, onFocus, disabled = false }) => {
+const Input = ({ placeholder, tipoInput = "text", maxCaracteres = null, valor, nomeInput, requirido = false, onChange, onFocus, disabled = false }) => {
     return (
         <>
             <input
@@ -15,12 +15,8 @@ const Input = ({ label, placeholder, tipoInput = "text", valor, nomeInput, requi
                 placeholder={placeholder}
                 required={requirido}
                 disabled={disabled}
+                maxLength={maxCaracteres}
             />
-            {label && (
-                <label className={styles.inputLabel} htmlFor={nomeInput}>
-                    {label}
-                </label>
-            )}
         </>
     );
 };

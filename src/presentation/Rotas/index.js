@@ -11,7 +11,7 @@ const Rotas = ({ login, colaborador, colaboradorForm, appPrincipal, boasVindas }
                 <Route path="/" element={boasVindas} />
                 <Route path="/colaborador/listar" element={colaborador} />
                 <Route path="/colaborador/alterar/:id" element={colaboradorForm} />
-                <Route path="/colaborador/listars" element={colaboradorForm} />
+                <Route path="/colaborador/criar/" element={colaboradorForm} />
                 <Route path="/usuarios" element={colaborador} />
                 <Route path="/api/v1/arquivo/:id" element={colaborador} />
             </RotaAutenticada>

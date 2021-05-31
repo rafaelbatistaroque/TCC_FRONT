@@ -35,7 +35,7 @@ export default class Requisicao {
         };
     }
 
-    static criarPut(token, body) {
+    static criarPut(body, token) {
         return {
             options: {
                 method: "PUT",

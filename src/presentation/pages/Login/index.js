@@ -6,6 +6,7 @@ import { PerfilContext } from "../../hooks/perfilContext";
 import Input from "../../components/Input";
 import useForm from "../../hooks/useForm";
 import styles from "./index.module.css";
+import { NAVEGACAO } from "../../../utils/constantes";
 
 const Login = ({ autenticar }) => {
 
@@ -39,7 +40,7 @@ const Login = ({ autenticar }) => {
 
         limparCampos();
         salvarSessao(data);
-        navegarPara("/app");
+        navegarPara(NAVEGACAO.TELA_APP);
     };
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { FUNCOES_COLABORADOR } from '../../../utils/constantes';
+import { FUNCOES_COLABORADOR, NAVEGACAO } from '../../../utils/constantes';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import Select from '../../components/Select';
@@ -9,10 +9,7 @@ import { PerfilContext } from '../../hooks/perfilContext';
 import useForm from '../../hooks/useForm';
 import styles from './index.module.css';
 
-const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarColaborador }) => {
-    const TELA_COLABORADOR_LISTA = "/app/colaborador/listar";
-    const TELA_LOGIN = "/login";
-
+const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarColaborador, colaboradorEntidade }) => {
     const { limparSessao } = React.useContext(PerfilContext);
     const navegarPara = useNavigate();
     const { id } = useParams();
@@ -21,21 +18,30 @@ const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarColaborado
     const funcaoForm = useForm();
     const cpfForm = useForm();
     const idForm = useForm();
+    const [tituloPagina, setTituloPagina] = React.useState("Criar");
+    const ehEdicao = React.useRef(id > 0);
+
+    const handlerSelecionado = React.useRef(
+        ehEdicao.current
+            ? alterarColaborador
+            : criarColaborador);
 
     React.useEffect(() => {
-        if (id === undefined)
+        if (ehEdicao.current === false)
             return;
 
+        setTituloPagina("Editar");
         handlerObterColaborador(id);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
 
     const handlerObterColaborador = async (id) => {
         const { erro, data, statusCode } = await obterColaborador.handler(id);
 
         if (erro && statusCode === 401) {
             limparSessao();
-            return navegarPara(TELA_LOGIN);
+            return navegarPara(NAVEGACAO.TELA_LOGIN);
             //TODO:mensagem: você não está logado
         }
 
@@ -62,15 +68,18 @@ const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarColaborado
     };
 
     const funcaoSelecionada = async () => {
-        const { erro, data, statusCode } = await alterarColaborador.handler(
+        const colaborador = colaboradorEntidade.criar(
             idForm.valor,
+            cpfForm.valor,
             primeiroNomeForm.valor,
             sobrenomeForm.valor,
             funcaoForm.valor);
 
+        const { erro, data, statusCode } = await handlerSelecionado.current.handler(colaborador);
+
         if (erro && statusCode === 401) {
             limparSessao();
-            return navegarPara(TELA_LOGIN);
+            return navegarPara(NAVEGACAO.TELA_LOGIN);
             //TODO:mensagem: você não está logado
         }
 
@@ -78,21 +87,21 @@ const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarColaborado
             return console.log("erros", data);
 
         limparCamposFormulario();
-        navegarPara(TELA_COLABORADOR_LISTA);
+        navegarPara(NAVEGACAO.TELA_COLABORADORES);
     };
 
     const handlerCancelar = () => {
-        navegarPara(TELA_COLABORADOR_LISTA);
+        navegarPara(NAVEGACAO.TELA_COLABORADORES);
     };
 
     return (<>
 
         <section className={`conteudo`}>
-            <TituloPagina tituloPagina="Editar Colaborador" />
+            <TituloPagina tituloPagina={tituloPagina} />
             <form className={`${styles.form} animarFadeInDeCima`}>
                 <Input placeholder="Primeiro Nome" requirido={false} {...primeiroNomeForm} />
                 <Input placeholder="Sobrenome" requirido={false} {...sobrenomeForm} />
-                <Input placeholder="CPF" disabled={true} valor={cpfForm.valor} />
+                <Input placeholder="CPF: xxx.xxx.xxx-xx" maxCaracteres={14} {...cpfForm} disabled={ehEdicao.current} />
                 <Select opcoes={FUNCOES_COLABORADOR} {...funcaoForm} />
                 <div className={styles.grupoBotoes}>
                     <Button estiloEnfase={true} tipoButton="button" tituloBotao="Cancelar" onClick={handlerCancelar} />

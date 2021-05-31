@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
+import { NAVEGACAO } from "../../../utils/constantes";
+import BotaoColaborador from "../../components/BotaoColaborador";
 import ItemColaborador from "../../components/ItemColaborador";
 import TituloPagina from "../../components/TituloPagina";
 import { PerfilContext } from "../../hooks/perfilContext";
@@ -20,7 +22,7 @@ const Colaboradores = ({ obterColaboradores, deletarColaborador }) => {
 
         if (erro && statusCode === 401) {
             limparSessao();
-            return navegarPara("/login");
+            return navegarPara(NAVEGACAO.TELA_LOGIN);
             //TODO:mensagem: você não está logado
         }
 
@@ -31,11 +33,13 @@ const Colaboradores = ({ obterColaboradores, deletarColaborador }) => {
     };
 
     const handlerDeletar = async (colaboradorId) => {
+        if (colaboradorId === undefined) return;
+
         const { erro, statusCode, data } = await deletarColaborador.handler(colaboradorId);
 
         if (erro && statusCode === 401) {
             limparSessao();
-            return navegarPara("/login");
+            return navegarPara(NAVEGACAO.TELA_LOGIN);
             //TODO:mensagem: você não está logado
         }
 
@@ -46,7 +50,19 @@ const Colaboradores = ({ obterColaboradores, deletarColaborador }) => {
     };
 
     const handlerAlterar = (colaboradorId) => {
-        navegarPara(`/app/colaborador/alterar/${colaboradorId}`);
+        if (colaboradorId === undefined) return;
+
+        navegarPara(`${NAVEGACAO.TELA_COLABORADOR_ALTERAR}${colaboradorId}`);
+    };
+
+    const handlerVisualizarDocumentos = (colaboradorId) => {
+        if (colaboradorId === undefined) return;
+
+        navegarPara(`${NAVEGACAO.TELA_COLABORADOR_ALTERAR}${colaboradorId}`);
+    };
+
+    const handlerCriarColaborador = () => {
+        navegarPara(NAVEGACAO.TELA_COLABORADOR_CRIAR);
     };
 
     return (
@@ -54,9 +70,11 @@ const Colaboradores = ({ obterColaboradores, deletarColaborador }) => {
             <section className={`conteudo`}>
                 <TituloPagina tituloPagina="Colaboradores" />
                 <ul className={`${styles.itensLista} animarFadeInDeCima`}>
+                    <BotaoColaborador finalidade={3} onClick={handlerCriarColaborador} />
                     {colaboradores.length > 0 && colaboradores.map((colaborador) => (
                         <ItemColaborador key={colaborador.id}
                             colaborador={colaborador}
+                            visualizarDocumentos={handlerVisualizarDocumentos}
                             deletarColaborador={handlerDeletar}
                             alterarColaborador={handlerAlterar} />
                     ))}

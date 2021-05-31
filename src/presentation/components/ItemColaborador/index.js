@@ -2,7 +2,7 @@ import React from 'react';
 import BotaoColaborador from '../BotaoColaborador';
 import styles from './index.module.css';
 
-const ItemColaborador = ({ colaborador, deletarColaborador, alterarColaborador }) => {
+const ItemColaborador = ({ colaborador, deletarColaborador, alterarColaborador, visualizarDocumentos }) => {
 
     const { id, numeroCPF, primeiroNome, sobrenome, funcaoNome } = colaborador;
 
@@ -14,7 +14,7 @@ const ItemColaborador = ({ colaborador, deletarColaborador, alterarColaborador }
             </div>
             <span className={styles.funcaoNome}>{funcaoNome}</span>
         </li>
-        <BotaoColaborador finalidade={0} onClick={() => console.log("navegar")} />
+        <BotaoColaborador finalidade={0} onClick={() => visualizarDocumentos(id)} />
         <BotaoColaborador finalidade={1} onClick={() => alterarColaborador(id)} />
         <BotaoColaborador finalidade={2} onClick={() => deletarColaborador(id)} />
     </div>

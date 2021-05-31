@@ -1,5 +1,5 @@
 import React from 'react';
-import BotaoColaborador from '../BotaoColaborador';
+import BotaoForm from '../BotaoForm';
 import styles from './index.module.css';
 
 const ItemColaborador = ({ colaborador, deletarColaborador, alterarColaborador, visualizarDocumentos }) => {
@@ -14,9 +14,9 @@ const ItemColaborador = ({ colaborador, deletarColaborador, alterarColaborador, 
             </div>
             <span className={styles.funcaoNome}>{funcaoNome}</span>
         </li>
-        <BotaoColaborador finalidade={0} onClick={() => visualizarDocumentos(id)} />
-        <BotaoColaborador finalidade={1} onClick={() => alterarColaborador(id)} />
-        <BotaoColaborador finalidade={2} onClick={() => deletarColaborador(id)} />
+        <BotaoForm finalidade={0} onClick={() => visualizarDocumentos(id, primeiroNome)} />
+        <BotaoForm finalidade={1} onClick={() => alterarColaborador(id)} />
+        <BotaoForm finalidade={2} onClick={() => deletarColaborador(id)} />
     </div>
     );
 

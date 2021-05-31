@@ -1,4 +1,4 @@
-.botaoColaboradores{
+.botaoForm{
     border: var(--borda-padrao);
     width: 4.5rem;
     height: 4.5rem;
@@ -21,5 +21,10 @@
 
 [finalidade="btnNovo"]{
     background: url("../../Assets/adicionar_pessoa_icon.svg") no-repeat 50% / 50%;
+    background-color: var(--cor-clara);
+}
+
+[finalidade="btnDownload"]{
+    background: url("../../Assets/download_arquivo_icon.svg") no-repeat 50% / 50%;
     background-color: var(--cor-clara);
 }

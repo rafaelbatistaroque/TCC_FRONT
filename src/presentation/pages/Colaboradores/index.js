@@ -1,14 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import { NAVEGACAO } from "../../../utils/constantes";
-import BotaoColaborador from "../../components/BotaoColaborador";
+import BotaoForm from "../../components/BotaoForm";
 import ItemColaborador from "../../components/ItemColaborador";
 import TituloPagina from "../../components/TituloPagina";
 import { PerfilContext } from "../../hooks/perfilContext";
 import styles from "./index.module.css";
 
 const Colaboradores = ({ obterColaboradores, deletarColaborador }) => {
-    const { limparSessao } = React.useContext(PerfilContext);
+    const { limparSessao, setColaborador } = React.useContext(PerfilContext);
     const [colaboradores, setColaboradores] = React.useState([]);
     const navegarPara = useNavigate();
 
@@ -55,10 +55,12 @@ const Colaboradores = ({ obterColaboradores, deletarColaborador }) => {
         navegarPara(`${NAVEGACAO.TELA_COLABORADOR_ALTERAR}${colaboradorId}`);
     };
 
-    const handlerVisualizarDocumentos = (colaboradorId) => {
+    const handlerVisualizarDocumentos = (colaboradorId, nomeColaborador) => {
         if (colaboradorId === undefined) return;
 
-        navegarPara(`${NAVEGACAO.TELA_COLABORADOR_ALTERAR}${colaboradorId}`);
+        setColaborador(nomeColaborador);
+
+        navegarPara(`${NAVEGACAO.TELA_ARQUIVOS}${colaboradorId}`);
     };
 
     const handlerCriarColaborador = () => {
@@ -70,7 +72,7 @@ const Colaboradores = ({ obterColaboradores, deletarColaborador }) => {
             <section className={`conteudo`}>
                 <TituloPagina tituloPagina="Colaboradores" />
                 <ul className={`${styles.itensLista} animarFadeInDeCima`}>
-                    <BotaoColaborador finalidade={3} onClick={handlerCriarColaborador} />
+                    <BotaoForm finalidade={3} onClick={handlerCriarColaborador} />
                     {colaboradores.length > 0 && colaboradores.map((colaborador) => (
                         <ItemColaborador key={colaborador.id}
                             colaborador={colaborador}

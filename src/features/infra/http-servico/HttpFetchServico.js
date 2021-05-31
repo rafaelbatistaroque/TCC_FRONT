@@ -49,6 +49,4 @@ export default class HttpFetchServico extends HttpServico {
         let { obterResponse } = Response.criar(promise, json);
         return obterResponse;
     }
-
-
 }

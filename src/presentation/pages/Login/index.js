@@ -46,16 +46,16 @@ const Login = ({ autenticar }) => {
 
     return (
         <section className={styles.background}>
-            <div className={`${styles.formLogin} animarFadeInDeCima`}>
+            <form className={`${styles.formLogin} animarFadeInDeCima`}>
                 <div className={styles.grupoInputs} onKeyPress={({ key }) => key === "Enter" && handlerClique()}>
                     <Input onFocus={limparMensagemErro} placeholder="Identificação" requirido={true} {...usuario} />
-                    <Input onFocus={limparMensagemErro} placeholder="Senha" tipoInput="password" requirido={true} {...senha} />
+                    <Input onFocus={limparMensagemErro} placeholder="Senha" nomeInput="password" tipoInput="password" requirido={true} {...senha} />
                 </div>
                 {mensagensErro.length > 0 && (
                     <CaixaMensagem textoMensagem={mensagensErro} />
                 )}
                 <Button tipoButton="button" tituloBotao="Entrar" onClick={handlerClique} />
-            </div>
+            </form>
         </section>
     );
 };

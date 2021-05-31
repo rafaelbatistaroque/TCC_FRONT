@@ -9,8 +9,10 @@ export const PerfilProvider = ({ children }) => {
     const [ehAutenticado, setEhAutenticado] = useLocalStorage("@token/Paperless", "");
     const [ehPerfilAdministrador, setEhPerfilAdministrador] = useLocalStorage("@perfil/Paperless", false);
     const [usuarioNome, setUsuarioNome] = useLocalStorage("@usuario/Paperless", "");
+    const [colaborador, setColaborador] = React.useState("");
 
     const limparSessao = () => {
+        setColaborador("");
         setEhAutenticado("");
         setEhPerfilAdministrador(false);
         setUsuarioNome("");
@@ -26,6 +28,8 @@ export const PerfilProvider = ({ children }) => {
         ehAutenticado,
         ehPerfilAdministrador,
         usuarioNome,
+        colaborador,
+        setColaborador,
         salvarSessao,
         limparSessao
     }}>{children}</PerfilContext.Provider>;

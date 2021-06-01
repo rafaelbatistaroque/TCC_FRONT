@@ -1,7 +1,6 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router";
-
-import RotaAutenticada from "../components/RotaAutenticada";
+import { RotaAutenticada } from "../components";
 
 const Rotas = ({ login, colaboradores, colaboradorForm, appPrincipal, boasVindas, arquivos }) => {
     return (

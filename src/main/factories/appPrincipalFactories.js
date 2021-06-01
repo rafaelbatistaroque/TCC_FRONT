@@ -1,4 +1,4 @@
-import AppPrincipal from "../../presentation/components/AppPrincipal";
+import { AppPrincipal } from "../../presentation/components";
 
 export const appPrincipalFactory = (ehPerfilAdministrador, usuarioNome) => {
 

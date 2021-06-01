@@ -1,8 +1,8 @@
 import React from 'react';
-import BotaoForm from '../BotaoForm';
+import { BotaoForm } from '../';
 import styles from './index.module.css';
 
-const ItemArquivo = ({ arquivo, deletarArquivo, downloadArquivo }) => {
+export const ItemArquivo = ({ arquivo, deletarArquivo, downloadArquivo }) => {
 
     const { id, dataCadastro, mesReferencia, anoReferencia, observacoes, anexo } = arquivo;
     const { tipo, nome, extensao, linkParaDownload } = anexo;
@@ -27,7 +27,4 @@ const ItemArquivo = ({ arquivo, deletarArquivo, downloadArquivo }) => {
         <BotaoForm finalidade={2} onClick={() => deletarArquivo(1)} />
     </div>
     );
-
 };
-
-export default ItemArquivo;

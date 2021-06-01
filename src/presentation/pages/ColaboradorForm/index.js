@@ -1,15 +1,13 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { FUNCOES_COLABORADOR, NAVEGACAO } from '../../../utils/constantes';
-import Button from '../../components/Button';
-import Input from '../../components/Input';
-import Select from '../../components/Select';
-import TituloPagina from '../../components/TituloPagina';
+import { FUNCOES_COLABORADOR, NAVEGACAO } from '../../../main/utils/constantes';
+import Colaborador from "../../../main/models/Colaborador";
+import { Button, Input, Select, TituloPagina } from '../../components';
 import { PerfilContext } from '../../hooks/perfilContext';
 import useForm from '../../hooks/useForm';
 import styles from './index.module.css';
 
-const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarColaborador, colaboradorEntidade }) => {
+const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarColaborador }) => {
     const { limparSessao } = React.useContext(PerfilContext);
     const navegarPara = useNavigate();
     const { id } = useParams();
@@ -68,7 +66,7 @@ const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarColaborado
     };
 
     const funcaoSelecionada = async () => {
-        const colaborador = colaboradorEntidade.criar(
+        const colaborador = Colaborador.criar(
             idForm.valor,
             cpfForm.valor,
             primeiroNomeForm.valor,

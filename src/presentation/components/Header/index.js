@@ -1,20 +1,19 @@
 import React from "react";
-import styles from "./index.module.css";
 import { NavLink } from "react-router-dom";
+import styles from "./index.module.css";
+import { NAVEGACAO } from "../../../main/utils/constantes";
 
-const Header = ({ usuarioNome, ehPerfilAdministrador = false }) => {
+export const Header = ({ usuarioNome, ehPerfilAdministrador = false }) => {
     return (
         <header className={styles.header}>
             <nav className={`${styles.nav} container`}>
                 <div>{usuarioNome}</div>
                 <div className={styles.menu}>
-                    <NavLink to="/app/colaborador/listar" activeClassName={styles.active}>Colaboradores</NavLink>
-                    {ehPerfilAdministrador && <NavLink to="/app/usuario/adicionar" activeClassName={styles.active}>Usuários</NavLink>}
+                    <NavLink to={NAVEGACAO.TELA_COLABORADORES} activeClassName={styles.active}>Colaboradores</NavLink>
+                    {ehPerfilAdministrador && <NavLink to={NAVEGACAO.TELA_USUARIO_ADICIONAR} activeClassName={styles.active}>Usuários</NavLink>}
                     <NavLink to="/login" activeClassName={styles.active}>Login</NavLink>
                 </div>
             </nav>
         </header>
     );
 };
-
-export default Header;

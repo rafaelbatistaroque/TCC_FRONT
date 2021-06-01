@@ -1,4 +1,4 @@
-import { TEXTOS } from "../../../../utils/constantes";
+import { TEXTOS } from "../../../../main/utils/constantes";
 
 export default class CriarColaborador {
     handler() {

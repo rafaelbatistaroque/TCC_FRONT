@@ -22,4 +22,5 @@ export const NAVEGACAO = {
     TELA_COLABORADOR_ALTERAR: "/app/colaborador/alterar/",
     TELA_COLABORADOR_CRIAR: "/app/colaborador/criar/",
     TELA_ARQUIVOS: "/app/arquivo/listar/",
+    TELA_USUARIO_ADICIONAR: "/app/usuario/adicionar/",
 };

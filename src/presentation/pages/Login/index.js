@@ -1,12 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "../../components/Button";
-import CaixaMensagem from "../../components/CaixaMensagem";
+import { CaixaMensagem, Input, Button } from "../../components";
 import { PerfilContext } from "../../hooks/perfilContext";
-import Input from "../../components/Input";
 import useForm from "../../hooks/useForm";
 import styles from "./index.module.css";
-import { NAVEGACAO } from "../../../utils/constantes";
+import { NAVEGACAO } from "../../../main/utils/constantes";
 
 const Login = ({ autenticar }) => {
 

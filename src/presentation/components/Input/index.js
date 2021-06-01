@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./index.module.css";
 
-const Input = ({ placeholder, tipoInput = "text", maxCaracteres = null, valor, nomeInput, requirido = false, onChange, onFocus, disabled = false }) => {
+export const Input = ({ placeholder, tipoInput = "text", maxCaracteres = null, valor, nomeInput, requirido = false, onChange, onFocus, disabled = false }) => {
     return (
         <>
             <input
@@ -20,5 +20,3 @@ const Input = ({ placeholder, tipoInput = "text", maxCaracteres = null, valor, n
         </>
     );
 };
-
-export default Input;

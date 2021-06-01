@@ -1,8 +1,8 @@
 import React from 'react';
-import BotaoForm from '../BotaoForm';
+import { BotaoForm } from "../";
 import styles from './index.module.css';
 
-const ItemColaborador = ({ colaborador, deletarColaborador, alterarColaborador, visualizarDocumentos }) => {
+export const ItemColaborador = ({ colaborador, deletarColaborador, alterarColaborador, visualizarDocumentos }) => {
 
     const { id, numeroCPF, primeiroNome, sobrenome, funcaoNome } = colaborador;
 
@@ -21,5 +21,3 @@ const ItemColaborador = ({ colaborador, deletarColaborador, alterarColaborador, 
     );
 
 };
-
-export default ItemColaborador;

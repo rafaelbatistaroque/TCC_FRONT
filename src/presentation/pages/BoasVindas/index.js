@@ -1,5 +1,5 @@
 import React from 'react';
-import TituloPagina from '../../components/TituloPagina';
+import { TituloPagina } from '../../components';
 
 const BoasVindas = ({ usuarioNome }) => {
     return <section className={`conteudo`}>

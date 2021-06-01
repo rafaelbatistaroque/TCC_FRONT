@@ -1,9 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import { NAVEGACAO } from "../../../utils/constantes";
-import BotaoForm from "../../components/BotaoForm";
-import ItemColaborador from "../../components/ItemColaborador";
-import TituloPagina from "../../components/TituloPagina";
+import { NAVEGACAO } from "../../../main/utils/constantes";
+import { BotaoForm, ItemColaborador, TituloPagina } from "../../components";
 import { PerfilContext } from "../../hooks/perfilContext";
 import styles from "./index.module.css";
 

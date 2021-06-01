@@ -1,4 +1,4 @@
-import { TEXTOS } from "../../../../utils/constantes";
+import { TEXTOS } from "../../../../main/utils/constantes";
 import ObterColaborador from "../../../domain/casos-de-uso/colaboradores/ObterColaborador";
 
 export default class ObterColaboradorhandler extends ObterColaborador {

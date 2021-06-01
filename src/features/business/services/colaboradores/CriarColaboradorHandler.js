@@ -1,4 +1,4 @@
-import { TEXTOS } from "../../../../utils/constantes";
+import { TEXTOS } from "../../../../main/utils/constantes";
 import CriarColaborador from "../../../domain/casos-de-uso/colaboradores/CriarColaborador";
 
 export default class CriarColaboradorHandler extends CriarColaborador {

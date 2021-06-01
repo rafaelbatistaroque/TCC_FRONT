@@ -1,4 +1,4 @@
-import { TEXTOS } from "../../../../utils/constantes";
+import { TEXTOS } from "../../../../main/utils/constantes";
 import AutenticarUsuario from "../../../domain/casos-de-uso/autenticacao/AutenticarUsuario";
 
 export default class AutenticarUsuarioHandler extends AutenticarUsuario {

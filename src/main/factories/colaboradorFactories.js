@@ -5,10 +5,9 @@ import CriarColaboradorHandler from "../../features/business/services/colaborado
 import HttpFetchServico from "../../features/infra/http-servico/HttpFetchServico";
 import Colaboradores from "../../presentation/pages/Colaboradores";
 import ColaboradorForm from "../../presentation/pages/ColaboradorForm";
-import API from "../../utils/urlApi";
-import Validacoes from "../../utils/Validacoes";
+import API from "../utils/urlApi";
+import Validacoes from "../utils/Validacoes";
 import ObterColaboradorhandler from "../../features/business/services/colaboradores/ObterColaboradorHandler";
-import Colaborador from "../../features/domain/entidades/Colaborador";
 
 const criarDependencias = (token) => {
     const validacoes = new Validacoes();
@@ -37,14 +36,12 @@ export const colaboradorFormFactory = (token) => {
     const alterarColaborador = new AlterarColaboradorHandler(url, { httpServico }, validacoes);
     const obterColaborador = new ObterColaboradorhandler(url, { httpServico }, validacoes);
     const criarColaborador = new CriarColaboradorHandler(url, { httpServico }, validacoes);
-    const colaboradorEntidade = new Colaborador();
 
     return {
         build: () => <ColaboradorForm
             alterarColaborador={alterarColaborador}
             obterColaborador={obterColaborador}
-            criarColaborador={criarColaborador}
-            colaboradorEntidade={colaboradorEntidade} />
+            criarColaborador={criarColaborador} />
     };
 };
 

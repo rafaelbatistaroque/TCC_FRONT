@@ -3,8 +3,7 @@ import DeletarColaboradorHandler from "../../features/business/services/colabora
 import ObterColaboradoresHandler from "../../features/business/services/colaboradores/ObterColaboradoresHandler";
 import CriarColaboradorHandler from "../../features/business/services/colaboradores/CriarColaboradorHandler";
 import HttpFetchServico from "../../features/infra/http-servico/HttpFetchServico";
-import Colaboradores from "../../presentation/pages/Colaboradores";
-import ColaboradorForm from "../../presentation/pages/ColaboradorForm";
+import { Colaboradores, ColaboradorForm } from "../../presentation/pages/";
 import API from "../utils/urlApi";
 import Validacoes from "../utils/Validacoes";
 import ObterColaboradorhandler from "../../features/business/services/colaboradores/ObterColaboradorHandler";

@@ -5,7 +5,7 @@ import { BotaoForm, ItemArquivo, TituloPagina } from '../../components';
 import { PerfilContext } from '../../hooks/perfilContext';
 import styles from './index.module.css';
 
-const Arquivos = ({ obterArquivos }) => {
+export const Arquivos = ({ obterArquivos }) => {
     const { limparSessao, colaborador } = React.useContext(PerfilContext);
     const [arquivos, setArquivos] = React.useState([]);
     const navegarPara = useNavigate();
@@ -51,5 +51,3 @@ const Arquivos = ({ obterArquivos }) => {
     </>;
 
 };
-
-export default Arquivos;

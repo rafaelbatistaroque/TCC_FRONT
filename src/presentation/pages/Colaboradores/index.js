@@ -5,7 +5,7 @@ import { BotaoForm, ItemColaborador, TituloPagina } from "../../components";
 import { PerfilContext } from "../../hooks/perfilContext";
 import styles from "./index.module.css";
 
-const Colaboradores = ({ obterColaboradores, deletarColaborador }) => {
+export const Colaboradores = ({ obterColaboradores, deletarColaborador }) => {
     const { limparSessao, setColaborador } = React.useContext(PerfilContext);
     const [colaboradores, setColaboradores] = React.useState([]);
     const navegarPara = useNavigate();
@@ -83,5 +83,3 @@ const Colaboradores = ({ obterColaboradores, deletarColaborador }) => {
         </>
     );
 };
-
-export default Colaboradores;

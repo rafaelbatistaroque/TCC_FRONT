@@ -1,4 +1,4 @@
-import BoasVindas from "../../presentation/pages/BoasVindas";
+import { BoasVindas } from "../../presentation/pages";
 
 export const boasVindasFactories = (usuarioNome) => {
     return {

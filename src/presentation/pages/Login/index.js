@@ -6,7 +6,7 @@ import useForm from "../../hooks/useForm";
 import styles from "./index.module.css";
 import { NAVEGACAO } from "../../../main/utils/constantes";
 
-const Login = ({ autenticar }) => {
+export const Login = ({ autenticar }) => {
 
     const [mensagensErro, setMensagensErro] = React.useState([]);
     const { salvarSessao } = React.useContext(PerfilContext);
@@ -57,5 +57,3 @@ const Login = ({ autenticar }) => {
         </section>
     );
 };
-
-export default Login;

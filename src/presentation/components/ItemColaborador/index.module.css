@@ -1,6 +1,6 @@
 .containerItemLista{
     display: flex;
-    gap: .5rem;
+    gap: 1rem;
 }
 
 .itemLista{

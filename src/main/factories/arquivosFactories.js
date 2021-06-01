@@ -2,7 +2,7 @@ import HttpFetchServico from "../../features/infra/http-servico/HttpFetchServico
 import ObterArquivosHandler from "../../features/business/services/arquivo/ObterArquivosHandler";
 import API from "../utils/urlApi";
 import Validacoes from "../utils/Validacoes";
-import Arquivos from "../../presentation/pages/Arquivos";
+import { Arquivos } from "../../presentation/pages";
 
 const criarDependencias = (token) => {
     const validacoes = new Validacoes();

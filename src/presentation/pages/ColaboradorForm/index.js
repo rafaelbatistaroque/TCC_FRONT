@@ -7,7 +7,7 @@ import { PerfilContext } from '../../hooks/perfilContext';
 import useForm from '../../hooks/useForm';
 import styles from './index.module.css';
 
-const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarColaborador }) => {
+export const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarColaborador }) => {
     const { limparSessao } = React.useContext(PerfilContext);
     const navegarPara = useNavigate();
     const { id } = useParams();
@@ -108,5 +108,3 @@ const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarColaborado
             </form>
         </section></>);
 };
-
-export default ColaboradorForm;

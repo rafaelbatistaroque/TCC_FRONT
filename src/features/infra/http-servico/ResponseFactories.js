@@ -15,6 +15,7 @@ export default class Response {
 
         const errosDeResponse = {
             401: new Response(401, true, TEXTOS.NAO_AUTORIZADA),
+            403: new Response(403, true, TEXTOS.PERMISSAO_NEGADA),
             400: new Response(400, true, data?.erros),
             500: new Response(500, true),
             200: new Response(200, false, data)

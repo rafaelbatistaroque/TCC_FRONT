@@ -46,7 +46,7 @@ export const colaboradorFormFactory = (token) => {
     };
 };
 
-export const obterColaboradoresFactory = (token) => {
+export const obterColaboradoresFactory = (token, ehPerfilAdministrador, limparSessao) => {
     const url = `${API.urlBase}${API.colaborador}`;
     const { httpServico } = criarDependencias(token);
 
@@ -54,6 +54,8 @@ export const obterColaboradoresFactory = (token) => {
 
     return {
         build: () => <Colaboradores
+            ehPerfilAdministrador={ehPerfilAdministrador}
+            limparSessao={limparSessao}
             obterColaboradores={obterColaboradores}
             deletarColaborador={deletarColaboradorFactory(token).build()} />,
     };

@@ -39,7 +39,7 @@ export const arquivoFormFactory = (token) => {
     };
 };
 
-export const obterArquivosFactory = (token) => {
+export const obterArquivosFactory = (token, limparSessao) => {
     const url = `${API.urlBase}${API.arquivo}/`;
     const urlColaborador = `${API.urlBase}${API.colaborador}/`;
     const { httpServico, validacoes } = criarDependencias(token);
@@ -48,6 +48,6 @@ export const obterArquivosFactory = (token) => {
     const obterArquivos = new ObterArquivosHandler(url, { httpServico });
 
     return {
-        build: () => <Arquivos obterArquivos={obterArquivos} obterColaborador={obterColaborador} />,
+        build: () => <Arquivos limparSessao={limparSessao} obterArquivos={obterArquivos} obterColaborador={obterColaborador} />,
     };
 };

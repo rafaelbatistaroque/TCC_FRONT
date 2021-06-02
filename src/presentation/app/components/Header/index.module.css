@@ -7,6 +7,18 @@
   border-bottom: var(--borda-padrao);
 }
 
+.identificacaoLogado{
+    display: flex;
+    flex-direction: column;
+    font-size: .85rem;
+}
+
+.identificacaoLogado span:last-child{
+    font-size: 1.2rem;
+    font-weight: bold;
+    line-height: 1rem;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;

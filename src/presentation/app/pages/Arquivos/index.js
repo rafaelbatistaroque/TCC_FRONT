@@ -2,12 +2,10 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { NAVEGACAO } from "../../../../main/utils/constantes";
 import { BotaoForm, Input, ItemArquivo, TituloPagina } from '../../components';
-import { PerfilContext } from '../../hooks/perfilContext';
 import useForm from '../../hooks/useForm';
 import styles from './index.module.css';
 
-export const Arquivos = ({ obterArquivos, obterColaborador }) => {
-    const { limparSessao } = React.useContext(PerfilContext);
+export const Arquivos = ({ obterArquivos, obterColaborador, limparSessao }) => {
     const [arquivos, setArquivos] = React.useState([]);
     const [colaborador, setColaborador] = React.useState("");
     const pesquisa = useForm();

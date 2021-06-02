@@ -2,12 +2,10 @@ import React from "react";
 import { useNavigate } from "react-router";
 import { NAVEGACAO } from "../../../../main/utils/constantes";
 import { BotaoForm, Input, ItemColaborador, TituloPagina } from "../../components";
-import { PerfilContext } from "../../hooks/perfilContext";
 import useForm from "../../hooks/useForm";
 import styles from "./index.module.css";
 
-export const Colaboradores = ({ obterColaboradores, deletarColaborador }) => {
-    const { limparSessao } = React.useContext(PerfilContext);
+export const Colaboradores = ({ obterColaboradores, deletarColaborador, ehPerfilAdministrador, limparSessao }) => {
     const [colaboradores, setColaboradores] = React.useState([]);
     const navegarPara = useNavigate();
     const pesquisa = useForm();
@@ -84,7 +82,7 @@ export const Colaboradores = ({ obterColaboradores, deletarColaborador }) => {
                     <div className={styles.cabecalhoLista}>
                         <div className={styles.botoesCabecalho}>
                             <BotaoForm finalidade={5} onClick={handlerVoltar} />
-                            <BotaoForm finalidade={3} onClick={handlerCriarColaborador} />
+                            {ehPerfilAdministrador && <BotaoForm finalidade={3} onClick={handlerCriarColaborador} />}
                         </div>
                         <Input placeholder="Pesquisa" {...pesquisa} />
                     </div>
@@ -93,7 +91,9 @@ export const Colaboradores = ({ obterColaboradores, deletarColaborador }) => {
                             colaborador={colaborador}
                             visualizarDocumentos={handlerVisualizarDocumentos}
                             deletarColaborador={handlerDeletar}
-                            alterarColaborador={handlerAlterar} />
+                            alterarColaborador={handlerAlterar}
+                            ehPerfilAdministrador={ehPerfilAdministrador}
+                        />
                     ))}
                 </ul>
             </section>

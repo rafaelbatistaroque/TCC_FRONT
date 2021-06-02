@@ -4,6 +4,7 @@ export const TEXTOS = {
     SENHA_NULA_VAZIA: "Senha não pode ser nulo ou vazio.",
     NAO_DELETAR_COLABORADOR: "Não foi possível deletar colaborador.",
     NAO_AUTORIZADA: "Requisição não autorizada.",
+    PERMISSAO_NEGADA: "Permissão negada para esse tipo de operação.",
     PARAMETRO_INVALIDO: "Parametros inválidos."
 };
 

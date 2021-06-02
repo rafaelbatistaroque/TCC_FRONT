@@ -5,17 +5,17 @@ import { PerfilContext } from "./hooks/perfilContext";
 import Rotas from "./rotas";
 
 const App = () => {
-    const { ehAutenticado, ehPerfilAdministrador, usuarioNome } = React.useContext(PerfilContext);
+    const { ehAutenticado, usuarioNome, ehPerfilAdministrador, limparSessao } = React.useContext(PerfilContext);
 
     return (
         <BrowserRouter>
             <Rotas
                 login={loginFactory().build()}
-                appPrincipal={appPrincipalFactory(JSON.parse(ehPerfilAdministrador), usuarioNome).build()}
+                appPrincipal={appPrincipalFactory(usuarioNome, JSON.parse(ehPerfilAdministrador), limparSessao).build()}
                 boasVindas={boasVindasFactories(usuarioNome).build()}
-                colaboradores={obterColaboradoresFactory(ehAutenticado).build()}
+                colaboradores={obterColaboradoresFactory(ehAutenticado, JSON.parse(ehPerfilAdministrador), limparSessao).build()}
                 colaboradorForm={colaboradorFormFactory(ehAutenticado).build()}
-                arquivos={obterArquivosFactory(ehAutenticado).build()}
+                arquivos={obterArquivosFactory(ehAutenticado, limparSessao).build()}
                 arquivoForm={arquivoFormFactory(ehAutenticado).build()}
             />
         </BrowserRouter>

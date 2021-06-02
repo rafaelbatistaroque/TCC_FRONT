@@ -2,7 +2,7 @@ import React from 'react';
 import { BotaoForm } from "..";
 import styles from './index.module.css';
 
-export const ItemColaborador = ({ colaborador, deletarColaborador, alterarColaborador, visualizarDocumentos }) => {
+export const ItemColaborador = ({ colaborador, deletarColaborador, alterarColaborador, visualizarDocumentos, ehPerfilAdministrador }) => {
 
     const { id, numeroCPF, primeiroNome, sobrenome, funcaoNome } = colaborador;
 
@@ -16,7 +16,7 @@ export const ItemColaborador = ({ colaborador, deletarColaborador, alterarColabo
         </li>
         <BotaoForm finalidade={0} onClick={() => visualizarDocumentos(id)} />
         <BotaoForm finalidade={1} onClick={() => alterarColaborador(id)} />
-        <BotaoForm finalidade={2} onClick={() => deletarColaborador(id)} />
+        {ehPerfilAdministrador && <BotaoForm finalidade={2} onClick={() => deletarColaborador(id)} />}
     </div>
     );
 

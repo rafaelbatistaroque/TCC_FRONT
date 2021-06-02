@@ -1,8 +1,8 @@
 import { AppPrincipal } from "../../presentation/app/components";
 
-export const appPrincipalFactory = (ehPerfilAdministrador, usuarioNome) => {
+export const appPrincipalFactory = (usuarioNome, ehPerfilAdministrador, limparSessao) => {
 
     return {
-        build: () => <AppPrincipal usuarioNome={usuarioNome} ehPerfilAdministrador={ehPerfilAdministrador} />
+        build: () => <AppPrincipal ehPerfilAdministrador={ehPerfilAdministrador} limparSessao={limparSessao} usuarioNome={usuarioNome} />
     };
 };

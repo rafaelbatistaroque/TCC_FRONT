@@ -1,8 +1,12 @@
+import {
+    CriarArquivoHandler,
+    ObterArquivosHandler
+} from "../../features/business/services/arquivo";
+import { ObterColaboradorHandler } from "../../features/business/services/colaboradores";
 import HttpFetchServico from "../../features/infra/http-servico/HttpFetchServico";
-import ObterArquivosHandler from "../../features/business/services/arquivo/ObterArquivosHandler";
 import API from "../utils/urlApi";
 import Validacoes from "../utils/Validacoes";
-import { Arquivos } from "../../presentation/pages";
+import { ArquivoForm, Arquivos } from "../../presentation/app/pages";
 
 const criarDependencias = (token) => {
     const validacoes = new Validacoes();
@@ -24,31 +28,26 @@ const criarDependencias = (token) => {
 //     };
 // };
 
-// export const colaboradorFormFactory = (token) => {
-//     const url = `${API.urlBase}${API.colaborador}/`;
-//     const { validacoes, httpServico } = criarDependencias(token);
+export const arquivoFormFactory = (token) => {
+    const url = `${API.urlBase}${API.arquivo}/`;
+    const { validacoes, httpServico } = criarDependencias(token);
 
-//     const alterarColaborador = new AlterarColaboradorHandler(url, { httpServico }, validacoes);
-//     const obterColaborador = new ObterColaboradorhandler(url, { httpServico }, validacoes);
-//     const criarColaborador = new CriarColaboradorHandler(url, { httpServico }, validacoes);
-//     const colaboradorEntidade = new Colaborador();
+    const criarArquivo = new CriarArquivoHandler(url, { httpServico }, validacoes);
 
-//     return {
-//         build: () => <ColaboradorForm
-//             alterarColaborador={alterarColaborador}
-//             obterColaborador={obterColaborador}
-//             criarColaborador={criarColaborador}
-//             colaboradorEntidade={colaboradorEntidade} />
-//     };
-// };
+    return {
+        build: () => <ArquivoForm criarArquivo={criarArquivo} />
+    };
+};
 
 export const obterArquivosFactory = (token) => {
     const url = `${API.urlBase}${API.arquivo}/`;
-    const { httpServico } = criarDependencias(token);
+    const urlColaborador = `${API.urlBase}${API.colaborador}/`;
+    const { httpServico, validacoes } = criarDependencias(token);
 
+    const obterColaborador = new ObterColaboradorHandler(urlColaborador, { httpServico }, validacoes);
     const obterArquivos = new ObterArquivosHandler(url, { httpServico });
 
     return {
-        build: () => <Arquivos obterArquivos={obterArquivos} />,
+        build: () => <Arquivos obterArquivos={obterArquivos} obterColaborador={obterColaborador} />,
     };
 };

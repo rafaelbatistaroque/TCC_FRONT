@@ -1,6 +1,6 @@
 import AutenticarUsuarioHandler from "../../features/business/services/autenticacao/AutenticarUsuarioHandler";
 import HttpFetchServico from "../../features/infra/http-servico/HttpFetchServico";
-import { Login } from "../../presentation/pages";
+import { Login } from "../../presentation/app/pages";
 import API from "../utils/urlApi";
 import Validacoes from "../utils/Validacoes";
 

@@ -10,43 +10,41 @@ export default class HttpFetchServico extends HttpServico {
         this.#token = token;
     }
 
-    async post(url, body) {
-        const { options } = Requisicao.criarPost(body, this.#token);
-
+    async handlerFetch(url, options) {
         const promise = await fetch(url, options);
 
         const json = await promise.json().catch(() => null);
         let { obterResponse } = Response.criar(promise, json);
         return obterResponse;
+    }
+
+    async post(url, body) {
+        const { options } = Requisicao.criarPost(body, this.#token);
+
+        return await this.handlerFetch(url, options);
     }
 
     async get(url) {
         const { options } = Requisicao.criarGet(this.#token);
 
-        const promise = await fetch(url, options);
-
-        const json = await promise.json().catch(() => null);
-        let { obterResponse } = Response.criar(promise, json);
-        return obterResponse;
+        return await this.handlerFetch(url, options);
     }
 
     async put(url, body) {
         const { options } = Requisicao.criarPut(body, this.#token);
 
-        const promise = await fetch(url, options);
-
-        const json = await promise.json().catch(() => null);
-        let { obterResponse } = Response.criar(promise, json);
-        return obterResponse;
+        return await this.handlerFetch(url, options);
     }
 
     async delete(url) {
         const { options } = Requisicao.criarDelete(this.#token);
 
-        const promise = await fetch(url, options);
+        return await this.handlerFetch(url, options);
+    }
 
-        const json = await promise.json().catch(() => null);
-        let { obterResponse } = Response.criar(promise, json);
-        return obterResponse;
+    async postForm(url, body) {
+        const { options } = Requisicao.criarForm(body, this.#token);
+
+        return await this.handlerFetch(url, options);
     }
 }

@@ -1,0 +1,35 @@
+.botaoForm{
+    border: var(--borda-padrao);
+    width: 4.5rem;
+    height: 4.5rem;
+}
+
+[finalidade="btnEditar"]{
+    background: url("../../assets/editar_colaborador_icon.svg") no-repeat 50% / 40%;
+    background-color: var(--cor-clara);
+}
+
+[finalidade="btnDeletar"]{
+    background: url("../../assets/deletar_colaborador_icon.svg") no-repeat 50% / 40%;
+    background-color: var(--cor-clara);
+}
+
+[finalidade="btnNavegar"]{
+    background: url("../../assets/ir_documentos_icon.svg") no-repeat 50% / 40%;
+    background-color: var(--cor-clara);
+}
+
+[finalidade="btnNovo"]{
+    background: url("../../assets/adicionar_pessoa_icon.svg") no-repeat 50% / 50%;
+    background-color: var(--cor-clara);
+}
+
+[finalidade="btnDownload"]{
+    background: url("../../assets/download_arquivo_icon.svg") no-repeat 50% / 50%;
+    background-color: var(--cor-clara);
+}
+
+[finalidade="btnVoltar"]{
+    background: url("../../assets/voltar_icon.svg") no-repeat 50% / 50%;
+    background-color: var(--cor-clara);
+}

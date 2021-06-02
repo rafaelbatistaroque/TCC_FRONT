@@ -47,4 +47,17 @@ export default class Requisicao {
             },
         };
     }
+
+    static criarForm(body, token) {
+        return {
+            options: {
+                method: "POST",
+                body,
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest",
+                    authorization: token
+                }
+            },
+        };
+    }
 }

@@ -1,7 +1,7 @@
 import { TEXTOS } from "../../../../main/utils/constantes";
 import ObterColaborador from "../../../domain/casos-de-uso/colaboradores/ObterColaborador";
 
-export default class ObterColaboradorhandler extends ObterColaborador {
+export default class ObterColaboradorHandler extends ObterColaborador {
     #url;
     #httpServico;
     #validacoes;

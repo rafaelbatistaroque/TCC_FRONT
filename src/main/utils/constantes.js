@@ -22,5 +22,12 @@ export const NAVEGACAO = {
     TELA_COLABORADOR_ALTERAR: "/app/colaborador/alterar/",
     TELA_COLABORADOR_CRIAR: "/app/colaborador/criar/",
     TELA_ARQUIVOS: "/app/arquivo/listar/",
+    TELA_ARQUIVOS_CRIAR: "/app/arquivo/criar/",
     TELA_USUARIO_ADICIONAR: "/app/usuario/adicionar/",
 };
+
+export const TIPO_ARQUIVO = [
+    { id: 1, item: "Atestado" },
+    { id: 2, item: "Cartão de ponto" },
+    { id: 3, item: "holerite" },
+];

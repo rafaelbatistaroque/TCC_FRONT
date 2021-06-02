@@ -1,12 +1,14 @@
-import AlterarColaboradorHandler from "../../features/business/services/colaboradores/AlterarColaboradorHandler";
-import DeletarColaboradorHandler from "../../features/business/services/colaboradores/DeletarColaboradorHandler";
-import ObterColaboradoresHandler from "../../features/business/services/colaboradores/ObterColaboradoresHandler";
-import CriarColaboradorHandler from "../../features/business/services/colaboradores/CriarColaboradorHandler";
+import {
+    AlterarColaboradorHandler,
+    CriarColaboradorHandler,
+    DeletarColaboradorHandler,
+    ObterColaboradorHandler,
+    ObterColaboradoresHandler
+} from "../../features/business/services/colaboradores";
 import HttpFetchServico from "../../features/infra/http-servico/HttpFetchServico";
-import { Colaboradores, ColaboradorForm } from "../../presentation/pages/";
+import { Colaboradores, ColaboradorForm } from "../../presentation/app/pages/";
 import API from "../utils/urlApi";
 import Validacoes from "../utils/Validacoes";
-import ObterColaboradorhandler from "../../features/business/services/colaboradores/ObterColaboradorHandler";
 
 const criarDependencias = (token) => {
     const validacoes = new Validacoes();
@@ -33,7 +35,7 @@ export const colaboradorFormFactory = (token) => {
     const { validacoes, httpServico } = criarDependencias(token);
 
     const alterarColaborador = new AlterarColaboradorHandler(url, { httpServico }, validacoes);
-    const obterColaborador = new ObterColaboradorhandler(url, { httpServico }, validacoes);
+    const obterColaborador = new ObterColaboradorHandler(url, { httpServico }, validacoes);
     const criarColaborador = new CriarColaboradorHandler(url, { httpServico }, validacoes);
 
     return {

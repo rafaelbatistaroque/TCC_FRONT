@@ -1,0 +1,18 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.grupoBotoes{
+    display: flex;
+    width: 50%;
+    align-self: flex-end;
+    gap: 1rem;
+}
+
+.grupo{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}

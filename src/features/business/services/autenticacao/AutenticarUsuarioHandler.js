@@ -2,14 +2,14 @@ import { TEXTOS } from "../../../../main/utils/constantes";
 import AutenticarUsuario from "../../../domain/casos-de-uso/autenticacao/AutenticarUsuario";
 
 export default class AutenticarUsuarioHandler extends AutenticarUsuario {
-    #url;
+    url;
     #httpServico;
     #validacoes;
 
     constructor(url, { httpServico }, validacoes) {
         super();
 
-        this.#url = url;
+        this.url = url;
         this.#httpServico = httpServico;
         this.#validacoes = validacoes;
     }
@@ -21,7 +21,7 @@ export default class AutenticarUsuarioHandler extends AutenticarUsuario {
         if (validacao.erro)
             return validacao;
 
-        const resposta = await this.#httpServico?.post(this.#url, { usuarioIdentificacao, usuarioSenha });
+        const resposta = await this.#httpServico?.post(this.url, { usuarioIdentificacao, usuarioSenha });
 
         return resposta;
     }

@@ -1,13 +1,11 @@
 import AutenticarUsuarioHandler from "../../features/business/services/autenticacao/AutenticarUsuarioHandler";
-import HttpFetchServico from "../../features/infra/http-servico/HttpFetchServico";
 import { Login } from "../../presentation/app/pages";
-import API from "../utils/urlApi";
-import Validacoes from "../utils/Validacoes";
+import { API } from "../utils/constantes";
+import criarDependencias from "./dependenciasFactories";
 
 export const loginFactory = () => {
     const url = `${API.urlBase}${API.altenticacao}`;
-    const httpServico = new HttpFetchServico();
-    const validacoes = new Validacoes();
+    const { validacoes, httpServico } = criarDependencias();
     const autenticacao = new AutenticarUsuarioHandler(
         url,
         { httpServico },

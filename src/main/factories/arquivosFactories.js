@@ -3,19 +3,9 @@ import {
     ObterArquivosHandler
 } from "../../features/business/services/arquivo";
 import { ObterColaboradorHandler } from "../../features/business/services/colaboradores";
-import HttpFetchServico from "../../features/infra/http-servico/HttpFetchServico";
-import API from "../utils/urlApi";
-import Validacoes from "../utils/Validacoes";
 import { ArquivoForm, Arquivos } from "../../presentation/app/pages";
-
-const criarDependencias = (token) => {
-    const validacoes = new Validacoes();
-    const httpServico = new HttpFetchServico(token);
-    return {
-        validacoes,
-        httpServico,
-    };
-};
+import { API } from "../utils/constantes";
+import criarDependencias from "./dependenciasFactories";
 
 // const deletarArquivoFactory = (token) => {
 //     const url = `${API.urlBase}${API.colaborador}/`;

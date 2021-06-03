@@ -2,22 +2,12 @@ import {
     AlterarColaboradorHandler,
     CriarColaboradorHandler,
     DeletarColaboradorHandler,
-    ObterColaboradorHandler,
-    ObterColaboradoresHandler
+    ObterColaboradoresHandler,
+    ObterColaboradorHandler
 } from "../../features/business/services/colaboradores";
-import HttpFetchServico from "../../features/infra/http-servico/HttpFetchServico";
 import { Colaboradores, ColaboradorForm } from "../../presentation/app/pages/";
-import API from "../utils/urlApi";
-import Validacoes from "../utils/Validacoes";
-
-const criarDependencias = (token) => {
-    const validacoes = new Validacoes();
-    const httpServico = new HttpFetchServico(token);
-    return {
-        validacoes,
-        httpServico,
-    };
-};
+import { API } from "../utils/constantes";
+import criarDependencias from "./dependenciasFactories";
 
 const deletarColaboradorFactory = (token) => {
     const url = `${API.urlBase}${API.colaborador}/`;

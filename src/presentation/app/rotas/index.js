@@ -1,23 +1,24 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router";
+import { ROTA } from "../../../main/utils/constantes";
 import { RotaAutenticada } from "../components";
 
 const Rotas = ({ login, colaboradores, colaboradorForm, appPrincipal, boasVindas, arquivos, arquivoForm }) => {
     return (
         <Routes>
-            <Route exact path="/" element={<Navigate to="/login" />} />
-            <RotaAutenticada exact path="/app" element={appPrincipal}>
-                <Route path="/" element={boasVindas} />
-                <Route path="/colaborador/listar" element={colaboradores} />
-                <Route path="/colaborador/alterar/:id" element={colaboradorForm} />
-                <Route path="/colaborador/criar/" element={colaboradorForm} />
-                <Route path="/arquivo/listar/:id" element={arquivos} />
-                <Route path="/arquivo/criar/:id" element={arquivoForm} />
-                <Route path="/usuarios" element={colaboradores} />
-                <Route path="/api/v1/arquivo/:id" element={colaboradores} />
+            <Route exact path={ROTA.ROOT} element={<Navigate to="/login" />} />
+            <RotaAutenticada exact path={ROTA.APP} element={appPrincipal}>
+                <Route path={ROTA.ROOT} element={boasVindas} />
+                <Route path={ROTA.COLABORADORES_LISTAR} element={colaboradores} />
+                <Route path={ROTA.COLABORADOR_ALTERAR_ID} element={colaboradorForm} />
+                <Route path={ROTA.COLABORADOR_CRIAR} element={colaboradorForm} />
+                <Route path={ROTA.ARQUIVO_LISTAR_ID} element={arquivos} />
+                <Route path={ROTA.ARQUIVO_CRIAR_ID} element={arquivoForm} />
+                <Route path={ROTA.USUARIO_LISTAR} element={colaboradores} />
+                <Route path={ROTA.USUARIO_CRIAR} element={colaboradores} />
             </RotaAutenticada>
-            <Route path="/api/v1/arquivo/:id/:codigo" element={colaboradores} />
-            <Route path="/login" element={login} />
+            <Route path={ROTA.DOWNLOAD_ARQUIVO} element={colaboradores} />
+            <Route path={ROTA.LOGIN} element={login} />
             <Route
                 path="*"
                 element={<h1>Erro 404 - Página não encontrada</h1>}

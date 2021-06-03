@@ -17,15 +17,28 @@ export const FUNCOES_COLABORADOR = [
 ];
 
 export const NAVEGACAO = {
-    ROOT: "/",
     TELA_LOGIN: "/login",
     TELA_APP: "/app",
-    TELA_COLABORADORES: "/app/colaborador/listar",
+    TELA_COLABORADORES: "/app/colaborador/listar/",
     TELA_COLABORADOR_ALTERAR: "/app/colaborador/alterar/",
     TELA_COLABORADOR_CRIAR: "/app/colaborador/criar/",
     TELA_ARQUIVOS: "/app/arquivo/listar/",
     TELA_ARQUIVOS_CRIAR: "/app/arquivo/criar/",
-    TELA_USUARIO_ADICIONAR: "/app/usuario/adicionar/",
+    TELA_USUARIO_CRIAR: "/app/usuario/criar/",
+};
+
+export const ROTA = {
+    COLABORADOR_ALTERAR_ID: "/colaborador/alterar/:id",
+    DOWNLOAD_ARQUIVO: "/api/v1/arquivo/:id/:codigo",
+    COLABORADORES_LISTAR: "/colaborador/listar/",
+    ARQUIVO_LISTAR_ID: "/arquivo/listar/:id",
+    COLABORADOR_CRIAR: "/colaborador/criar/",
+    ARQUIVO_CRIAR_ID: "/arquivo/criar/:id",
+    USUARIO_LISTAR: "/usuario/listar/",
+    USUARIO_CRIAR: "/usuario/criar/",
+    LOGIN: "/login",
+    APP: "/app",
+    ROOT: "/",
 };
 
 export const TIPO_ARQUIVO = [

@@ -17,6 +17,7 @@ export const FUNCOES_COLABORADOR = [
 ];
 
 export const NAVEGACAO = {
+    ROOT: "/",
     TELA_LOGIN: "/login",
     TELA_APP: "/app",
     TELA_COLABORADORES: "/app/colaborador/listar",
@@ -32,3 +33,11 @@ export const TIPO_ARQUIVO = [
     { id: 2, item: "Cartão de ponto" },
     { id: 3, item: "holerite" },
 ];
+
+export const API = {
+    urlBase: "https://localhost:5001/api/v1",
+    altenticacao: "/autenticacao",
+    colaborador: "/colaborador",
+    arquivo: "/arquivo",
+    usuario: "/usuario",
+};

@@ -15,10 +15,10 @@ export default class CriarColaboradorHandler extends CriarColaborador {
     }
 
     async handler(colaborador) {
-        const { erro, data } = this.validar(colaborador);
+        const validacao = this.validar(colaborador);
 
-        if (erro)
-            return data;
+        if (validacao.erro)
+            return validacao;
 
         return await this.#httpServico.post(this.#url, colaborador);
     }

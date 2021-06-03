@@ -4,4 +4,8 @@ export default class DeletarColaborador {
     handler() {
         throw new Error(TEXTOS.NAO_IMPLEMENTADO);
     }
+
+    validar() {
+        throw new Error(TEXTOS.NAO_IMPLEMENTADO);
+    }
 }

@@ -15,18 +15,24 @@ export default class DeletarColaboradorHandler extends DeletarColaborador {
     }
 
     async handler(colaboradorId) {
-        this.#validacoes.EhRequerido(colaboradorId, TEXTOS.NAO_DELETAR_COLABORADOR);
+        const validacao = this.validar(colaboradorId);
 
-        if (this.#validacoes.EhInvalido) {
-            const erros = this.#validacoes.Erros;
-            this.#validacoes.LimparErros();
-
-            return {
-                erro: true,
-                data: erros,
-            };
-        }
+        if (validacao.erro)
+            return validacao;
 
         return await this.#httpServico?.delete(`${this.#url}${colaboradorId}`);
+    }
+
+    validar(colaboradorId) {
+        this.#validacoes.EhRequerido(colaboradorId, TEXTOS.NAO_DELETAR_COLABORADOR);
+
+        const validacao = {
+            erro: this.#validacoes.EhInvalido,
+            data: this.#validacoes.Erros,
+        };
+
+        this.#validacoes.LimparErros();
+
+        return validacao;
     }
 }

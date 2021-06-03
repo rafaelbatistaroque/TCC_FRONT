@@ -16,10 +16,10 @@ export default class ObterColaboradorHandler extends ObterColaborador {
 
     async handler(colaboradorId) {
 
-        const { erro, data } = this.validar(colaboradorId);
+        const validacao = this.validar(colaboradorId);
 
-        if (erro)
-            return data;
+        if (validacao.erro)
+            return validacao;
 
         return await this.#httpServico.get(`${this.#url}${colaboradorId}`);
     }

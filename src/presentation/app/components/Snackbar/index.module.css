@@ -1,0 +1,29 @@
+.snackbarContainer{
+    position: fixed;
+    z-index: 1000;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+.snackbar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: .75rem;
+    margin: 1rem;
+    max-width: 70vw;
+    min-width: 10rem;
+    min-height: 4rem;
+    font-size: 1.2rem;
+    opacity: 0;
+    animation: animarSnackAbaixo .3s forwards;
+}
+
+@keyframes animarSnackAbaixo{
+    to{
+        opacity: initial;
+        transform: translateY(-1rem);
+    }
+}

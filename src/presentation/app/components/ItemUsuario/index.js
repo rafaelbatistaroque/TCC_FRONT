@@ -1,11 +1,9 @@
 import React from 'react';
-import { Switch } from '../Switch';
+import { BotaoForm } from '../BotaoForm';
 import styles from './index.module.css';
 
 export const ItemUsuario = ({ usuario, alterarStatus }) => {
     const { codigo, usuarioNome, ehUsuarioAtivo, perfilNome } = usuario;
-
-    const [statusUsuario, setStatusUsuario] = React.useState(ehUsuarioAtivo);
 
     return (<div className={styles.containerItemLista}>
         <li className={styles.itemLista}>
@@ -14,9 +12,9 @@ export const ItemUsuario = ({ usuario, alterarStatus }) => {
                 <span className={styles.codigo}>{codigo}</span>
             </div>
 
-            <span className={styles.perfilNome}>{perfilNome} {ehUsuarioAtivo}</span>
+            <span className={styles.perfilNome}>{perfilNome}</span>
         </li>
-        <Switch codigoUsuario={`${codigo}`} valor={statusUsuario} onChange={({ target }) => { setStatusUsuario(target.checked); alterarStatus(codigo); }} />
+        <BotaoForm finalidade={ehUsuarioAtivo ? 6 : 7} onClick={() => alterarStatus(codigo)} />
     </div>
     );
 };

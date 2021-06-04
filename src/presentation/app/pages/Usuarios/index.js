@@ -1,12 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
+import UsuarioModel from '../../../../main/models/UsuarioModel';
 import { NAVEGACAO } from '../../../../main/utils/constantes';
 import { BotaoForm, Input, TituloPagina } from '../../components';
 import { ItemUsuario } from '../../components/ItemUsuario';
 import useForm from '../../hooks/useForm';
 import styles from './index.module.css';
 
-export const Usuarios = ({ obterUsuarios, limparSessao }) => {
+export const Usuarios = ({ obterUsuarios, alterarStatus, limparSessao }) => {
     const [usuarios, setUsuarios] = React.useState([]);
     const navegarPara = useNavigate();
     const pesquisa = useForm();
@@ -32,22 +33,21 @@ export const Usuarios = ({ obterUsuarios, limparSessao }) => {
     };
 
     const handlerAlterarStatus = async (codigo) => {
-        console.log(`alterar status de ${codigo}`);
-
         if (codigo === undefined) return;
 
-        // const { erro, statusCode, data } = await deletarColaborador.handler(colaboradorId);
+        const usuario = UsuarioModel.alterarStatus(codigo);
+        const { erro, statusCode, data } = await alterarStatus.handler(usuario);
 
-        // if (erro && statusCode === 401) {
-        //     limparSessao();
-        //     return navegarPara(NAVEGACAO.TELA_LOGIN);
-        //     //TODO:mensagem: você não está logado
-        // }
+        if (erro && statusCode === 401) {
+            limparSessao();
+            return navegarPara(NAVEGACAO.TELA_LOGIN);
+            //TODO:mensagem: você não está logado
+        }
 
-        // if (erro) //TODO: tratar erros diversos
-        //     return console.log("erros", data);
+        if (erro)//TODO: tratar erros diversos
+            return console.log("erros", data);
 
-        // setColaboradores(colaboradores.filter(x => x.id !== colaboradorId));
+        handlerObterUsuario();
     };
 
     const handlerCriarUsuario = () => {

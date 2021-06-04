@@ -3,7 +3,7 @@ import { Switch } from '../Switch';
 import styles from './index.module.css';
 
 export const ItemUsuario = ({ usuario, alterarStatus }) => {
-    const { codigo, usuarioNome, ehUsuarioAtivo, perfilId, perfilNome } = usuario;
+    const { codigo, usuarioNome, ehUsuarioAtivo, perfilNome } = usuario;
 
     const [statusUsuario, setStatusUsuario] = React.useState(ehUsuarioAtivo);
 

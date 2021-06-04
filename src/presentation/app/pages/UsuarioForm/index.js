@@ -36,7 +36,7 @@ export const UsuarioForm = ({ limparSessao, criarUsuario }) => {
             return console.log("erros", data);
 
         limparCamposFormulario();
-        navegarPara(`${NAVEGACAO.TELA_APP}`);
+        navegarPara(`${NAVEGACAO.TELA_USUARIO_LISTAR}`);
     };
 
     const handlerCancelar = () => {
@@ -49,7 +49,7 @@ export const UsuarioForm = ({ limparSessao, criarUsuario }) => {
             <TituloPagina tituloPagina="Criar Usuário" />
             <form className={`${styles.form} animarFadeInDeCima`}>
                 <Input placeholder="Primeiro Nome" requirido={false} {...usuarioNomeForm} />
-                <Input placeholder="Senha" requirido={false} {...usuarioSenhaForm} />
+                <Input placeholder="Senha" tipoInput="password" requirido={false} {...usuarioSenhaForm} />
                 <Select opcoes={PERFIS_USUARIO} {...perfilForm} />
                 <div className={styles.grupoBotoes}>
                     <Button estiloEnfase={true} tipoButton="button" tituloBotao="Cancelar" onClick={handlerCancelar} />

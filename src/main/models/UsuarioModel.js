@@ -3,7 +3,7 @@ export default class UsuarioModel {
     usuarioSenha;
     usuarioPerfil;
 
-    constructor(id, usuarioNome, usuarioSenha, usuarioPerfil) {
+    constructor(usuarioNome, usuarioSenha, usuarioPerfil) {
         this.usuarioNome = usuarioNome;
         this.usuarioSenha = usuarioSenha;
         this.usuarioPerfil = usuarioPerfil;

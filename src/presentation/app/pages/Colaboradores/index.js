@@ -7,7 +7,7 @@ import useForm from "../../hooks/useForm";
 import styles from "./index.module.css";
 
 export const Colaboradores = ({ obterColaboradores, deletarColaborador, ehPerfilAdministrador, limparSessao }) => {
-    const { snackErro } = React.useContext(SnackbarContext);
+    const { snackErro, snackSucesso } = React.useContext(SnackbarContext);
     const [colaboradores, setColaboradores] = React.useState([]);
     const navegarPara = useNavigate();
     const pesquisa = useForm();
@@ -46,7 +46,10 @@ export const Colaboradores = ({ obterColaboradores, deletarColaborador, ehPerfil
 
         const resposta = await deletarColaborador.handler(colaboradorId);
 
-        validarResposta(resposta) && setColaboradores(colaboradores.filter(x => x.id !== colaboradorId));
+        if (validarResposta(resposta)) {
+            setColaboradores(colaboradores.filter(x => x.id !== colaboradorId));
+            snackSucesso(TEXTOS.DELETADO_SUCESSO);
+        }
     };
 
     const handlerAlterar = (colaboradorId) => {

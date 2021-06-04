@@ -14,10 +14,6 @@ export const Login = ({ autenticar }) => {
     const senha = useForm();
     const navegarPara = useNavigate();
 
-    React.useEffect(() => {
-        limparMensagemErro();
-    }, []);
-
     const limparMensagemErro = () => {
         setMensagensErro([]);
     };

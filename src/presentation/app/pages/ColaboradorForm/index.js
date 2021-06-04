@@ -16,7 +16,7 @@ export const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarCol
     const funcaoForm = useForm(1);
     const cpfForm = useForm();
     const idForm = useForm();
-    const [tituloPagina, setTituloPagina] = React.useState("Criar");
+    const [tituloPagina, setTituloPagina] = React.useState("Criar Colaborador");
     const ehEdicao = React.useRef(id > 0);
 
     const handlerSelecionado = React.useRef(
@@ -28,7 +28,7 @@ export const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarCol
         if (ehEdicao.current === false)
             return;
 
-        setTituloPagina("Editar");
+        setTituloPagina("Editar Colaborador");
         handlerObterColaborador(id);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);

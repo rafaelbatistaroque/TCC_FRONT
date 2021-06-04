@@ -3,12 +3,12 @@ import { Navigate, Route, Routes } from "react-router";
 import { ROTA } from "../../../main/utils/constantes";
 import { RotaAutenticada } from "../components";
 
-const Rotas = ({ login, colaboradores, colaboradorForm, appPrincipal, boasVindas, arquivos, arquivoForm, usuarios, usuarioForm }) => {
+const Rotas = ({ login, colaboradores, colaboradorForm, appPrincipal, arquivos, arquivoForm, usuarios, usuarioForm }) => {
     return (
         <Routes>
-            <Route exact path={ROTA.ROOT} element={<Navigate to="/login" />} />
+            <Route exact path={ROTA.ROOT} element={<Navigate to={ROTA.LOGIN} />} />
             <RotaAutenticada exact path={ROTA.APP} element={appPrincipal}>
-                <Route path={ROTA.ROOT} element={boasVindas} />
+                <Route path={ROTA.ROOT} element={<Navigate to={`${ROTA.APP}${ROTA.COLABORADORES_LISTAR}`} />} />
                 <Route path={ROTA.COLABORADORES_LISTAR} element={colaboradores} />
                 <Route path={ROTA.COLABORADOR_ALTERAR_ID} element={colaboradorForm} />
                 <Route path={ROTA.COLABORADOR_CRIAR} element={colaboradorForm} />

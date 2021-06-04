@@ -4,7 +4,6 @@ import {
     appPrincipalFactory,
     arquivoFormFactory,
     obterArquivosFactory,
-    boasVindasFactories,
     loginFactory,
     obterColaboradoresFactory,
     colaboradorFormFactory,
@@ -22,7 +21,6 @@ const App = () => {
             <Rotas
                 login={loginFactory().build()}
                 appPrincipal={appPrincipalFactory(usuarioNome, JSON.parse(ehPerfilAdministrador), limparSessao).build()}
-                boasVindas={boasVindasFactories(usuarioNome).build()}
                 colaboradores={obterColaboradoresFactory(ehAutenticado, JSON.parse(ehPerfilAdministrador), limparSessao).build()}
                 colaboradorForm={colaboradorFormFactory(ehAutenticado).build()}
                 arquivos={obterArquivosFactory(ehAutenticado, limparSessao).build()}

@@ -1,4 +1,3 @@
-export { BoasVindas } from "./BoasVindas";
 export { Login } from "./Login";
 export { ColaboradorForm } from "./ColaboradorForm";
 export { Colaboradores } from "./Colaboradores";

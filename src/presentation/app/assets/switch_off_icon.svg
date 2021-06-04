@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="65" height="33" viewBox="0 0 65 33">
+  <g id="switch_off_icon" transform="translate(0 -0.39)">
+    <g id="Retângulo_7" data-name="Retângulo 7" transform="translate(0 0.39)" fill="none" stroke="#575757" stroke-width="3">
+      <rect width="65" height="33" rx="16.5" stroke="none"/>
+      <rect x="1.5" y="1.5" width="62" height="30" rx="15" fill="none"/>
+    </g>
+    <g id="Elipse_4" data-name="Elipse 4" transform="translate(5 4.39)" fill="none" stroke="#575757" stroke-width="3">
+      <circle cx="12.5" cy="12.5" r="12.5" stroke="none"/>
+      <circle cx="12.5" cy="12.5" r="11" fill="none"/>
+    </g>
+  </g>
+</svg>

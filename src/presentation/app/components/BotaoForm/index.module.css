@@ -33,3 +33,13 @@
     background: url("../../assets/voltar_icon.svg") no-repeat 50% / 50%;
     background-color: var(--cor-clara);
 }
+
+[finalidade="switch_on"]{
+    background: url("../../assets/switch_on_icon.svg") no-repeat 50% / 70%;
+    background-color: var(--cor-clara);
+}
+
+[finalidade="switch_off"]{
+    background: url("../../assets/switch_off_icon.svg") no-repeat 50% / 70%;
+    background-color: var(--cor-clara);
+}

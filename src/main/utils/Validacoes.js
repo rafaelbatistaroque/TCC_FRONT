@@ -26,6 +26,18 @@ export default class Validacoes {
         return this;
     }
 
+    DeveSerMes(valor, mensagem) {
+        if (!valor || !/^(0[1-9])|(1[0-2])$/.test(valor)) this.#erros.push({ id: gerarId(), mensagem });
+
+        return this;
+    }
+
+    DeveSerAno(valor, mensagem) {
+        if (!valor || !/^20[2-9][0-9]$/.test(valor)) this.#erros.push({ id: gerarId(), mensagem });
+
+        return this;
+    }
+
     DeveSerIgual(valor, len, mensagem) {
         if (valor.length !== len) this.#erros.push({ id: gerarId(), mensagem });
 

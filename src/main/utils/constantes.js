@@ -2,7 +2,8 @@ export const TEXTOS = {
     NAO_IMPLEMENTADO: "Método não implementado.",
     USUARIO_NULO_VAZIO: "Usuário não pode ser nulo ou vazio.",
     SENHA_NULA_VAZIA: "Senha não pode ser nulo ou vazio.",
-    NAO_DELETAR_COLABORADOR: "Não foi possível deletar colaborador.",
+    NAO_DELETAR_COLABORADOR: "Não foi possível deletar este colaborador.",
+    NAO_DELETAR_ARQUIVO: "Não foi possível deletar este aquivo.",
     NAO_AUTORIZADA: "Requisição não autorizada.",
     PERMISSAO_NEGADA: "Permissão negada para esse tipo de operação.",
     PARAMETRO_INVALIDO: "Parametros inválidos."
@@ -16,6 +17,11 @@ export const FUNCOES_COLABORADOR = [
     { id: 5, item: "Servicos Gerais" },
 ];
 
+export const PERFIS_USUARIO = [
+    { id: 1, item: "Administrador" },
+    { id: 2, item: "Usuário" },
+];
+
 export const NAVEGACAO = {
     TELA_LOGIN: "/login",
     TELA_APP: "/app",
@@ -24,6 +30,7 @@ export const NAVEGACAO = {
     TELA_COLABORADOR_CRIAR: "/app/colaborador/criar/",
     TELA_ARQUIVOS: "/app/arquivo/listar/",
     TELA_ARQUIVOS_CRIAR: "/app/arquivo/criar/",
+    TELA_USUARIO_LISTAR: "/app/usuario/listar/",
     TELA_USUARIO_CRIAR: "/app/usuario/criar/",
 };
 

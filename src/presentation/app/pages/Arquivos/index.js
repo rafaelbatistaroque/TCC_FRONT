@@ -5,7 +5,7 @@ import { BotaoForm, Input, ItemArquivo, TituloPagina } from '../../components';
 import useForm from '../../hooks/useForm';
 import styles from './index.module.css';
 
-export const Arquivos = ({ obterArquivos, obterColaborador, limparSessao }) => {
+export const Arquivos = ({ obterArquivos, obterColaborador, deletarArquivo, limparSessao }) => {
     const [arquivos, setArquivos] = React.useState([]);
     const [colaborador, setColaborador] = React.useState("");
     const pesquisa = useForm();
@@ -33,7 +33,10 @@ export const Arquivos = ({ obterArquivos, obterColaborador, limparSessao }) => {
         setColaborador(data.primeiroNome);
     };
 
-    async function handlerObterArquivo(id) {
+    async function handlerObterArquivo(arquivoId) {
+        if (arquivoId === undefined)
+            return;
+
         const { erro, statusCode, data } = await obterArquivos.handler(id);
 
         if (erro && statusCode === 401) {
@@ -46,6 +49,24 @@ export const Arquivos = ({ obterArquivos, obterColaborador, limparSessao }) => {
             return console.log("erros", data);
 
         setArquivos(data.arquivos);
+    };
+
+    const handlerDeletarArquivo = async (arquivoId) => {
+        if (arquivoId === undefined)
+            return;
+
+        const { erro, statusCode, data } = await deletarArquivo.handler(arquivoId);
+
+        if (erro && statusCode === 401) {
+            limparSessao();
+            return navegarPara(NAVEGACAO.TELA_LOGIN);
+            //TODO:mensagem: você não está logado
+        }
+
+        if (erro) //TODO: tratar erros diversos
+            return console.log("erros", data);
+
+        setArquivos(arquivos.filter(x => x.id !== arquivoId));
     };
 
     const handlerDownload = (url) => {
@@ -83,7 +104,7 @@ export const Arquivos = ({ obterArquivos, obterColaborador, limparSessao }) => {
                     <Input placeholder="Pesquisa" {...pesquisa} />
                 </div>
                 {arquivos.length > 0 && arquivos.filter(filtro).map((arquivo) => (
-                    <ItemArquivo key={arquivo.id} arquivo={arquivo} downloadArquivo={handlerDownload} />
+                    <ItemArquivo key={arquivo.id} arquivo={arquivo} deletarArquivo={handlerDeletarArquivo} downloadArquivo={handlerDownload} />
                 ))}
             </ul>
         </section>

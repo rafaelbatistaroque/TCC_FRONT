@@ -1,15 +1,13 @@
 import React from 'react';
-import useForm from "../../hooks/useForm";
-import useFormAnexo from "../../hooks/useFormAnexo";
+import { useNavigate, useParams } from 'react-router';
 import ArquivoModel from "../../../../main/models/ArquivoModel";
 import { NAVEGACAO, TIPO_ARQUIVO } from '../../../../main/utils/constantes';
 import { Button, Input, InputAnexo, InputTextArea, Select, TituloPagina } from '../../components';
+import useForm from "../../hooks/useForm";
+import useFormAnexo from "../../hooks/useFormAnexo";
 import styles from './index.module.css';
-import { useNavigate, useParams } from 'react-router';
-import { PerfilContext } from '../../hooks/perfilContext';
 
-export const ArquivoForm = ({ criarArquivo }) => {
-    const { limparSessao } = React.useContext(PerfilContext);
+export const ArquivoForm = ({ criarArquivo, limparSessao }) => {
     const { id } = useParams();
     const navegarPara = useNavigate();
     const mesRef = useForm();
@@ -56,7 +54,7 @@ export const ArquivoForm = ({ criarArquivo }) => {
 
     return (<>
         <section className={`conteudo`}>
-            <TituloPagina tituloPagina="Criar" />
+            <TituloPagina tituloPagina="Criar Arquivo" />
             <form className={`${styles.form} animarFadeInDeCima`}>
                 <div className={styles.grupo}>
                     <Input placeholder="Mês Referência. ex: 05" maxCaracteres={2} requirido={false} {...mesRef} />

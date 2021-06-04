@@ -101,7 +101,7 @@ export const Arquivos = ({ obterArquivos, obterColaborador, deletarArquivo, limp
                         <BotaoForm finalidade={5} onClick={handlerVoltar} />
                         <BotaoForm finalidade={3} onClick={handlerCriarArquivo} />
                     </div>
-                    <Input placeholder="Pesquisa" {...pesquisa} />
+                    {arquivos.length > 1 && <Input placeholder="Pesquisa" {...pesquisa} />}
                 </div>
                 {arquivos.length > 0 && arquivos.filter(filtro).map((arquivo) => (
                     <ItemArquivo key={arquivo.id} arquivo={arquivo} deletarArquivo={handlerDeletarArquivo} downloadArquivo={handlerDownload} />

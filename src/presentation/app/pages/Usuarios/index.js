@@ -74,7 +74,7 @@ export const Usuarios = ({ obterUsuarios, limparSessao }) => {
                         <BotaoForm finalidade={5} onClick={handlerVoltar} />
                         <BotaoForm finalidade={3} onClick={handlerCriarUsuario} />
                     </div>
-                    <Input placeholder="Pesquisa" {...pesquisa} />
+                    {usuarios.length > 1 && <Input placeholder="Pesquisa" {...pesquisa} />}
                 </div>
                 {usuarios.length > 0 && usuarios.filter(filtro).map((usuario) => (
                     <ItemUsuario key={`${usuario.codigo}${Date.now()}`}

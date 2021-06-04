@@ -84,7 +84,7 @@ export const Colaboradores = ({ obterColaboradores, deletarColaborador, ehPerfil
                             <BotaoForm finalidade={5} onClick={handlerVoltar} />
                             {ehPerfilAdministrador && <BotaoForm finalidade={3} onClick={handlerCriarColaborador} />}
                         </div>
-                        <Input placeholder="Pesquisa" {...pesquisa} />
+                        {colaboradores.length > 1 && <Input placeholder="Pesquisa" {...pesquisa} />}
                     </div>
                     {colaboradores.length > 0 && colaboradores.filter(filtro).map((colaborador) => (
                         <ItemColaborador key={colaborador.id}

@@ -1,11 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import { NAVEGACAO } from "../../../../main/utils/constantes";
+import { NAVEGACAO, TEXTOS } from "../../../../main/utils/constantes";
 import { BotaoForm, Input, ItemColaborador, TituloPagina } from "../../components";
+import { SnackbarContext } from "../../hooks/SnackbarContext";
 import useForm from "../../hooks/useForm";
 import styles from "./index.module.css";
 
 export const Colaboradores = ({ obterColaboradores, deletarColaborador, ehPerfilAdministrador, limparSessao }) => {
+    const { snackErro } = React.useContext(SnackbarContext);
     const [colaboradores, setColaboradores] = React.useState([]);
     const navegarPara = useNavigate();
     const pesquisa = useForm();
@@ -15,36 +17,36 @@ export const Colaboradores = ({ obterColaboradores, deletarColaborador, ehPerfil
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const handlerObterColaboradores = async () => {
-        const { erro, statusCode, data } = await obterColaboradores.handler();
+    const validarResposta = (resposta) => {
+        const { erro, statusCode, data } = resposta;
 
         if (erro && statusCode === 401) {
             limparSessao();
-            return navegarPara(NAVEGACAO.TELA_LOGIN);
-            //TODO:mensagem: você não está logado
+            snackErro(TEXTOS.NAO_LOGADO);
+            navegarPara(NAVEGACAO.TELA_LOGIN);
+            return false;
         }
 
-        if (erro) //TODO: tratar erros diversos
-            return console.log("erros", data);
+        if (erro) {
+            snackErro(data);
+            return false;
+        }
 
-        setColaboradores(data.colaboradores);
+        return true;
+    };
+
+    const handlerObterColaboradores = async () => {
+        const resposta = await obterColaboradores.handler();
+
+        validarResposta(resposta) && setColaboradores(resposta.data.colaboradores);
     };
 
     const handlerDeletar = async (colaboradorId) => {
         if (colaboradorId === undefined) return;
 
-        const { erro, statusCode, data } = await deletarColaborador.handler(colaboradorId);
+        const resposta = await deletarColaborador.handler(colaboradorId);
 
-        if (erro && statusCode === 401) {
-            limparSessao();
-            return navegarPara(NAVEGACAO.TELA_LOGIN);
-            //TODO:mensagem: você não está logado
-        }
-
-        if (erro) //TODO: tratar erros diversos
-            return console.log("erros", data);
-
-        setColaboradores(colaboradores.filter(x => x.id !== colaboradorId));
+        validarResposta(resposta) && setColaboradores(colaboradores.filter(x => x.id !== colaboradorId));
     };
 
     const handlerAlterar = (colaboradorId) => {

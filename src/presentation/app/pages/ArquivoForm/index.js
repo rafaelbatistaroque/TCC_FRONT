@@ -1,13 +1,15 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router';
 import ArquivoModel from "../../../../main/models/ArquivoModel";
-import { NAVEGACAO, TIPO_ARQUIVO } from '../../../../main/utils/constantes';
+import { NAVEGACAO, TEXTOS, TIPO_ARQUIVO } from '../../../../main/utils/constantes';
 import { Button, Input, InputAnexo, InputTextArea, Select, TituloPagina } from '../../components';
+import { SnackbarContext } from '../../hooks/SnackbarContext';
 import useForm from "../../hooks/useForm";
 import useFormAnexo from "../../hooks/useFormAnexo";
 import styles from './index.module.css';
 
 export const ArquivoForm = ({ criarArquivo, limparSessao }) => {
+    const { snackErro, snackSucesso } = React.useContext(SnackbarContext);
     const { id } = useParams();
     const navegarPara = useNavigate();
     const mesRef = useForm();
@@ -15,6 +17,24 @@ export const ArquivoForm = ({ criarArquivo, limparSessao }) => {
     const anexo = useFormAnexo();
     const tipoArquivo = useForm();
     const observacoes = useForm();
+
+    const validarResposta = (resposta) => {
+        const { erro, statusCode, data } = resposta;
+
+        if (erro && statusCode === 401) {
+            limparSessao();
+            snackErro(TEXTOS.NAO_LOGADO);
+            navegarPara(NAVEGACAO.TELA_LOGIN);
+            return false;
+        }
+
+        if (erro) {
+            snackErro(data);
+            return false;
+        }
+
+        return true;
+    };
 
     const limparCamposFormulario = () => {
         mesRef.setValor("");
@@ -33,19 +53,13 @@ export const ArquivoForm = ({ criarArquivo, limparSessao }) => {
             anexo.valor,
             observacoes.valor);
 
-        const { erro, data, statusCode } = await criarArquivo.handler(arquivo);
+        const resposta = await criarArquivo.handler(arquivo);
 
-        if (erro && statusCode === 401) {
-            limparSessao();
-            return navegarPara(NAVEGACAO.TELA_LOGIN);
-            //TODO:mensagem: você não está logado
+        if (validarResposta(resposta)) {
+            limparCamposFormulario();
+            snackSucesso(TEXTOS.RESGISTRO_SUCESSO);
+            navegarPara(`${NAVEGACAO.TELA_ARQUIVOS}${id}`);
         }
-
-        if (erro) //TODO: tratar erros diversos
-            return console.log("erros", data);
-
-        limparCamposFormulario();
-        navegarPara(`${NAVEGACAO.TELA_ARQUIVOS}${id}`);
     };
 
     const handlerCancelar = () => {

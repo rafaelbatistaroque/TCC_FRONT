@@ -6,7 +6,13 @@ export const TEXTOS = {
     NAO_DELETAR_ARQUIVO: "Não foi possível deletar este aquivo.",
     NAO_AUTORIZADA: "Requisição não autorizada.",
     PERMISSAO_NEGADA: "Permissão negada para esse tipo de operação.",
-    PARAMETRO_INVALIDO: "Parametros inválidos."
+    NAO_LOGADO: "Você não está logado(a).",
+    PARAMETRO_INVALIDO: "Parametros inválidos.",
+    RESGISTRO_SUCESSO: "Registro Salvo.",
+    DELETADO_SUCESSO: "Registro Deletado.",
+    MES_INVALIDO: "O campo mês é inválido.",
+    ANO_INVALIDO: "O campo ano é invalido",
+    ANEXO_INVALIDO: "O campo anexo é invalido",
 };
 
 export const FUNCOES_COLABORADOR = [

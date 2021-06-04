@@ -1,14 +1,16 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { FUNCOES_COLABORADOR, NAVEGACAO } from '../../../../main/utils/constantes';
+import { FUNCOES_COLABORADOR, NAVEGACAO, TEXTOS } from '../../../../main/utils/constantes';
 import ColaboradorModel from "../../../../main/models/ColaboradorModel";
 import { Button, Input, Select, TituloPagina } from '../../components';
 import { PerfilContext } from '../../hooks/perfilContext';
 import useForm from '../../hooks/useForm';
 import styles from './index.module.css';
+import { SnackbarContext } from '../../hooks/SnackbarContext';
 
 export const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarColaborador }) => {
     const { limparSessao } = React.useContext(PerfilContext);
+    const { snackErro, snackSucesso } = React.useContext(SnackbarContext);
     const navegarPara = useNavigate();
     const { id } = useParams();
     const primeiroNomeForm = useForm();
@@ -33,20 +35,22 @@ export const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarCol
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-
-    const handlerObterColaborador = async (id) => {
-        const { erro, data, statusCode } = await obterColaborador.handler(id);
+    const validarResposta = (resposta) => {
+        const { erro, statusCode, data } = resposta;
 
         if (erro && statusCode === 401) {
             limparSessao();
-            return navegarPara(NAVEGACAO.TELA_LOGIN);
-            //TODO:mensagem: você não está logado
+            snackErro(TEXTOS.NAO_LOGADO);
+            navegarPara(NAVEGACAO.TELA_LOGIN);
+            return false;
         }
 
-        if (erro) //TODO: tratar erros diversos
-            return console.log("erros", data);
+        if (erro) {
+            snackErro(data);
+            return false;
+        }
 
-        preencherCamposFormulario(data);
+        return true;
     };
 
     const preencherCamposFormulario = ({ primeiroNome, sobrenome, funcaoId, numeroCPF, id }) => {
@@ -65,6 +69,12 @@ export const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarCol
         idForm.setValor("");
     };
 
+    const handlerObterColaborador = async (id) => {
+        const resposta = await obterColaborador.handler(id);
+
+        validarResposta(resposta) && preencherCamposFormulario(resposta.data);
+    };
+
     const funcaoSelecionada = async () => {
         const colaborador = ColaboradorModel.criar(
             idForm.valor,
@@ -73,19 +83,14 @@ export const ColaboradorForm = ({ alterarColaborador, obterColaborador, criarCol
             sobrenomeForm.valor,
             funcaoForm.valor);
 
-        const { erro, data, statusCode } = await handlerSelecionado.current.handler(colaborador);
+        const resposta = await handlerSelecionado.current.handler(colaborador);
 
-        if (erro && statusCode === 401) {
-            limparSessao();
-            return navegarPara(NAVEGACAO.TELA_LOGIN);
-            //TODO:mensagem: você não está logado
+        if (validarResposta(resposta)) {
+            limparCamposFormulario();
+            snackSucesso(TEXTOS.RESGISTRO_SUCESSO);
+            navegarPara(NAVEGACAO.TELA_COLABORADORES);
         }
 
-        if (erro) //TODO: tratar erros diversos
-            return console.log("erros", data);
-
-        limparCamposFormulario();
-        navegarPara(NAVEGACAO.TELA_COLABORADORES);
     };
 
     const handlerCancelar = () => {

@@ -1,7 +1,6 @@
 export { AppPrincipal } from "./AppPrincipal";
 export { BotaoForm } from "./BotaoForm";
 export { Button } from "./Button";
-export { CaixaMensagem } from "./CaixaMensagem";
 export { Header } from "./Header";
 export { Input } from "./Input";
 export { ItemArquivo } from "./ItemArquivo";
@@ -11,3 +10,5 @@ export { Select } from "./Select";
 export { TituloPagina } from "./TituloPagina";
 export { InputAnexo } from "./InputAnexo";
 export { InputTextArea } from "./InputTextArea";
+export { Snackbar } from "./Snackbar";
+export { ItemUsuario } from "./ItemUsuario";

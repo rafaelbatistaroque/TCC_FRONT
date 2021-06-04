@@ -1,14 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
 import UsuarioModel from '../../../../main/models/UsuarioModel';
-import { NAVEGACAO } from '../../../../main/utils/constantes';
+import { NAVEGACAO, TEXTOS } from '../../../../main/utils/constantes';
 import { BotaoForm, Input, TituloPagina } from '../../components';
 import { ItemUsuario } from '../../components/ItemUsuario';
+import { SnackbarContext } from '../../hooks/SnackbarContext';
 import useForm from '../../hooks/useForm';
 import styles from './index.module.css';
 
 export const Usuarios = ({ obterUsuarios, alterarStatus, limparSessao }) => {
     const [usuarios, setUsuarios] = React.useState([]);
+    const { snackErro, snackSucesso } = React.useContext(SnackbarContext);
     const navegarPara = useNavigate();
     const pesquisa = useForm();
 
@@ -17,37 +19,40 @@ export const Usuarios = ({ obterUsuarios, alterarStatus, limparSessao }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const handlerObterUsuario = async () => {
-        const { erro, statusCode, data } = await obterUsuarios.handler();
+    const validarResposta = (resposta) => {
+        const { erro, statusCode, data } = resposta;
 
         if (erro && statusCode === 401) {
             limparSessao();
-            return navegarPara(NAVEGACAO.TELA_LOGIN);
-            //TODO:mensagem: você não está logado
+            snackErro(TEXTOS.NAO_LOGADO);
+            navegarPara(NAVEGACAO.TELA_LOGIN);
+            return false;
         }
 
-        if (erro) //TODO: tratar erros diversos
-            return console.log("erros", data);
+        if (erro) {
+            snackErro(data);
+            return false;
+        }
 
-        setUsuarios(data.usuarios);
+        return true;
+    };
+
+    const handlerObterUsuario = async () => {
+        const resposta = await obterUsuarios.handler();
+
+        validarResposta(resposta) && setUsuarios(resposta.data.usuarios);
     };
 
     const handlerAlterarStatus = async (codigo) => {
         if (codigo === undefined) return;
 
         const usuario = UsuarioModel.alterarStatus(codigo);
-        const { erro, statusCode, data } = await alterarStatus.handler(usuario);
+        const resposta = await alterarStatus.handler(usuario);
 
-        if (erro && statusCode === 401) {
-            limparSessao();
-            return navegarPara(NAVEGACAO.TELA_LOGIN);
-            //TODO:mensagem: você não está logado
+        if (validarResposta(resposta)) {
+            snackSucesso(TEXTOS.RESGISTRO_SUCESSO);
+            await handlerObterUsuario();
         }
-
-        if (erro)//TODO: tratar erros diversos
-            return console.log("erros", data);
-
-        handlerObterUsuario();
     };
 
     const handlerCriarUsuario = () => {

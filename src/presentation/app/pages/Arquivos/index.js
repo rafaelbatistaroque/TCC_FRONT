@@ -1,11 +1,13 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { NAVEGACAO } from "../../../../main/utils/constantes";
+import { NAVEGACAO, TEXTOS } from "../../../../main/utils/constantes";
 import { BotaoForm, Input, ItemArquivo, TituloPagina } from '../../components';
+import { SnackbarContext } from '../../hooks/SnackbarContext';
 import useForm from '../../hooks/useForm';
 import styles from './index.module.css';
 
 export const Arquivos = ({ obterArquivos, obterColaborador, deletarArquivo, limparSessao }) => {
+    const { snackErro, snackSucesso } = React.useContext(SnackbarContext);
     const [arquivos, setArquivos] = React.useState([]);
     const [colaborador, setColaborador] = React.useState("");
     const pesquisa = useForm();
@@ -18,55 +20,49 @@ export const Arquivos = ({ obterArquivos, obterColaborador, deletarArquivo, limp
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    async function handlerObterColaborador() {
-        const { erro, statusCode, data } = await obterColaborador.handler(id);
+    const validarResposta = (resposta) => {
+        const { erro, statusCode, data } = resposta;
 
         if (erro && statusCode === 401) {
             limparSessao();
-            return navegarPara(NAVEGACAO.TELA_LOGIN);
-            //TODO:mensagem: você não está logado
+            snackErro(TEXTOS.NAO_LOGADO);
+            navegarPara(NAVEGACAO.TELA_LOGIN);
+            return false;
         }
 
-        if (erro) //TODO: tratar erros diversos
-            return console.log("erros", data);
+        if (erro) {
+            snackErro(data);
+            return false;
+        }
 
-        setColaborador(data.primeiroNome);
+        return true;
+    };
+
+    async function handlerObterColaborador() {
+        const resposta = await obterColaborador.handler(id);
+
+        validarResposta(resposta) && setColaborador(resposta.data.primeiroNome);
     };
 
     async function handlerObterArquivo(arquivoId) {
         if (arquivoId === undefined)
             return;
 
-        const { erro, statusCode, data } = await obterArquivos.handler(id);
+        const resposta = await obterArquivos.handler(id);
 
-        if (erro && statusCode === 401) {
-            limparSessao();
-            return navegarPara(NAVEGACAO.TELA_LOGIN);
-            //TODO:mensagem: você não está logado
-        }
-
-        if (erro) //TODO: tratar erros diversos
-            return console.log("erros", data);
-
-        setArquivos(data.arquivos);
+        validarResposta(resposta) && setArquivos(resposta.data.arquivos);
     };
 
     const handlerDeletarArquivo = async (arquivoId) => {
         if (arquivoId === undefined)
             return;
 
-        const { erro, statusCode, data } = await deletarArquivo.handler(arquivoId);
+        const resposta = await deletarArquivo.handler(arquivoId);
 
-        if (erro && statusCode === 401) {
-            limparSessao();
-            return navegarPara(NAVEGACAO.TELA_LOGIN);
-            //TODO:mensagem: você não está logado
+        if (validarResposta(resposta)) {
+            setArquivos(arquivos.filter(x => x.id !== arquivoId));
+            snackSucesso(TEXTOS.DELETADO_SUCESSO);
         }
-
-        if (erro) //TODO: tratar erros diversos
-            return console.log("erros", data);
-
-        setArquivos(arquivos.filter(x => x.id !== arquivoId));
     };
 
     const handlerDownload = (url) => {

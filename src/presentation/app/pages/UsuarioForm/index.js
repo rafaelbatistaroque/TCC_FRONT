@@ -1,12 +1,14 @@
 import React from 'react';
 import UsuarioModel from "../../../../main/models/UsuarioModel";
 import { useNavigate } from 'react-router';
-import { NAVEGACAO, PERFIS_USUARIO } from '../../../../main/utils/constantes';
+import { NAVEGACAO, PERFIS_USUARIO, TEXTOS } from '../../../../main/utils/constantes';
 import { Button, Input, Select, TituloPagina } from '../../components';
 import useForm from '../../hooks/useForm';
 import styles from './index.module.css';
+import { SnackbarContext } from '../../hooks/SnackbarContext';
 
 export const UsuarioForm = ({ limparSessao, criarUsuario }) => {
+    const { snackErro, snackSucesso } = React.useContext(SnackbarContext);
     const navegarPara = useNavigate();
     const usuarioNomeForm = useForm();
     const usuarioSenhaForm = useForm();
@@ -28,14 +30,15 @@ export const UsuarioForm = ({ limparSessao, criarUsuario }) => {
 
         if (erro && statusCode === 401) {
             limparSessao();
+            snackErro(TEXTOS.NAO_LOGADO);
             return navegarPara(NAVEGACAO.TELA_LOGIN);
-            //TODO:mensagem: você não está logado
         }
 
-        if (erro) //TODO: tratar erros diversos
-            return console.log("erros", data);
+        if (erro)
+            return snackErro(data);
 
         limparCamposFormulario();
+        snackSucesso(TEXTOS.RESGISTRO_SUCESSO);
         navegarPara(`${NAVEGACAO.TELA_USUARIO_LISTAR}`);
     };
 

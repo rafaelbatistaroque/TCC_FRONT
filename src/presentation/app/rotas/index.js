@@ -1,10 +1,11 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router";
 import { ROTA } from "../../../main/utils/constantes";
-import { RotaAutenticada } from "../components";
+import { RotaAutenticada, Snackbar } from "../components";
 
 const Rotas = ({ login, colaboradores, colaboradorForm, appPrincipal, arquivos, arquivoForm, usuarios, usuarioForm }) => {
-    return (
+    return (<>
+        <Snackbar />
         <Routes>
             <Route exact path={ROTA.ROOT} element={<Navigate to={ROTA.LOGIN} />} />
             <RotaAutenticada exact path={ROTA.APP} element={appPrincipal}>
@@ -24,6 +25,7 @@ const Rotas = ({ login, colaboradores, colaboradorForm, appPrincipal, arquivos, 
                 element={<h1>Erro 404 - Página não encontrada</h1>}
             />
         </Routes>
+    </>
     );
 };
 

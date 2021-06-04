@@ -1,6 +1,16 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import { appPrincipalFactory, arquivoFormFactory, obterArquivosFactory, boasVindasFactories, loginFactory, obterColaboradoresFactory, colaboradorFormFactory } from "../../main/factories";
+import {
+    appPrincipalFactory,
+    arquivoFormFactory,
+    obterArquivosFactory,
+    boasVindasFactories,
+    loginFactory,
+    obterColaboradoresFactory,
+    colaboradorFormFactory,
+    usuarioFactory
+} from "../../main/factories";
+import { usuarioFormFactory } from "../../main/factories/usuarioFactories";
 import { PerfilContext } from "./hooks/perfilContext";
 import Rotas from "./rotas";
 
@@ -16,7 +26,9 @@ const App = () => {
                 colaboradores={obterColaboradoresFactory(ehAutenticado, JSON.parse(ehPerfilAdministrador), limparSessao).build()}
                 colaboradorForm={colaboradorFormFactory(ehAutenticado).build()}
                 arquivos={obterArquivosFactory(ehAutenticado, limparSessao).build()}
-                arquivoForm={arquivoFormFactory(ehAutenticado).build()}
+                usuarios={usuarioFactory(ehAutenticado, limparSessao).build()}
+                arquivoForm={arquivoFormFactory(ehAutenticado, limparSessao).build()}
+                usuarioForm={usuarioFormFactory(ehAutenticado, limparSessao).build()}
             />
         </BrowserRouter>
     );

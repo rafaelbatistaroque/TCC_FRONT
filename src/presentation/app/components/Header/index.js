@@ -14,7 +14,7 @@ export const Header = ({ ehPerfilAdministrador, limparSessao, usuarioNome }) => 
                 </div>
                 <div className={styles.menu}>
                     <NavLink to={NAVEGACAO.TELA_COLABORADORES} activeClassName={styles.active}>Colaboradores</NavLink>
-                    {ehPerfilAdministrador && <NavLink to={NAVEGACAO.TELA_USUARIO_CRIAR} activeClassName={styles.active}>Usuários</NavLink>}
+                    {ehPerfilAdministrador && <NavLink to={NAVEGACAO.TELA_USUARIO_LISTAR} activeClassName={styles.active}>Usuários</NavLink>}
                     <NavLink to={NAVEGACAO.TELA_LOGIN} activeClassName={styles.active} onClick={limparSessao}>Sair</NavLink>
                 </div>
             </nav>

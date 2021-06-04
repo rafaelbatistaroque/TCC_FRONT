@@ -1,31 +1,21 @@
 import {
     CriarArquivoHandler,
-    ObterArquivosHandler
+    ObterArquivosHandler,
+    DeletarArquivoHandler
 } from "../../features/business/services/arquivo";
 import { ObterColaboradorHandler } from "../../features/business/services/colaboradores";
 import { ArquivoForm, Arquivos } from "../../presentation/app/pages";
 import { API } from "../utils/constantes";
 import criarDependencias from "./dependenciasFactories";
 
-// const deletarArquivoFactory = (token) => {
-//     const url = `${API.urlBase}${API.colaborador}/`;
-//     const { validacoes, httpServico } = criarDependencias(token);
-
-//     const deletarColaboradores = new DeletarColaboradorHandler(url, { httpServico }, validacoes);
-
-//     return {
-//         build: () => deletarColaboradores,
-//     };
-// };
-
-export const arquivoFormFactory = (token) => {
+export const arquivoFormFactory = (token, limparSessao) => {
     const url = `${API.urlBase}${API.arquivo}/`;
     const { validacoes, httpServico } = criarDependencias(token);
 
     const criarArquivo = new CriarArquivoHandler(url, { httpServico }, validacoes);
 
     return {
-        build: () => <ArquivoForm criarArquivo={criarArquivo} />
+        build: () => <ArquivoForm limparSessao={limparSessao} criarArquivo={criarArquivo} />
     };
 };
 
@@ -36,8 +26,9 @@ export const obterArquivosFactory = (token, limparSessao) => {
 
     const obterColaborador = new ObterColaboradorHandler(urlColaborador, { httpServico }, validacoes);
     const obterArquivos = new ObterArquivosHandler(url, { httpServico });
+    const deletarArquivo = new DeletarArquivoHandler(url, { httpServico }, validacoes);
 
     return {
-        build: () => <Arquivos limparSessao={limparSessao} obterArquivos={obterArquivos} obterColaborador={obterColaborador} />,
+        build: () => <Arquivos deletarArquivo={deletarArquivo} limparSessao={limparSessao} obterArquivos={obterArquivos} obterColaborador={obterColaborador} />,
     };
 };

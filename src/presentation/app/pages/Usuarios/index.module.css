@@ -1,0 +1,21 @@
+.cabecalhoLista{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cabecalhoLista input{
+    width: 10rem;
+}
+
+.botoesCabecalho{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.itensLista{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}

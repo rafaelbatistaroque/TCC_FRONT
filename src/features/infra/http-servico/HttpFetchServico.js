@@ -13,7 +13,7 @@ export default class HttpFetchServico extends HttpServico {
     async handlerFetch(url, options) {
         const promise = await fetch(url, options);
 
-        const json = await promise.json().catch(() => null);
+        const json = await promise.json().catch(() => "Erro inesperado.");
         let { obterResponse } = Response.criar(promise, json);
         return obterResponse;
     }

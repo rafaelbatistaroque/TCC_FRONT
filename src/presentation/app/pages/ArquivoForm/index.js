@@ -15,7 +15,7 @@ export const ArquivoForm = ({ criarArquivo, limparSessao }) => {
     const mesRef = useForm();
     const anoRef = useForm();
     const anexo = useFormAnexo();
-    const tipoArquivo = useForm();
+    const tipoArquivo = useForm(1);
     const observacoes = useForm();
 
     const validarResposta = (resposta) => {

@@ -1,16 +1,16 @@
 import { TEXTOS } from "../../../../main/utils/constantes";
-import CriarArquivo from "../../../domain/casos-de-uso/arquivo/CriarArquivo";
+import BusinessSuper from "../BusinessSuper";
 
 
-export default class CriarArquivoHandler extends CriarArquivo {
-    #url;
+export default class CriarArquivoHandler extends BusinessSuper {
+    url;
     #httpServico;
     #validacoes;
 
     constructor(url, { httpServico }, validacoes) {
         super();
 
-        this.#url = url;
+        this.url = url;
         this.#httpServico = httpServico;
         this.#validacoes = validacoes;
     }
@@ -27,7 +27,7 @@ export default class CriarArquivoHandler extends CriarArquivo {
             form.append(item[0], item[1]);
         });
 
-        return await this.#httpServico?.postForm(this.#url, form);
+        return await this.#httpServico?.postForm(this.url, form);
     }
 
     validar({ referenciaMes, referenciaAno, anexo }) {

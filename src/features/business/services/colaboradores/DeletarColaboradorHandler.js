@@ -1,15 +1,15 @@
 import { TEXTOS } from "../../../../main/utils/constantes";
-import DeletarColaborador from "../../../domain/casos-de-uso/colaboradores/DeletarColaborador";
+import BusinessSuper from "../BusinessSuper";
 
-export default class DeletarColaboradorHandler extends DeletarColaborador {
-    #url;
+export default class DeletarColaboradorHandler extends BusinessSuper {
+    url;
     #httpServico;
     #validacoes;
 
     constructor(url, { httpServico }, validacoes) {
         super();
 
-        this.#url = url;
+        this.url = url;
         this.#httpServico = httpServico;
         this.#validacoes = validacoes;
     }
@@ -20,7 +20,7 @@ export default class DeletarColaboradorHandler extends DeletarColaborador {
         if (validacao.erro)
             return validacao;
 
-        return await this.#httpServico?.delete(`${this.#url}${colaboradorId}`);
+        return await this.#httpServico?.delete(`${this.url}${colaboradorId}`);
     }
 
     validar(colaboradorId) {

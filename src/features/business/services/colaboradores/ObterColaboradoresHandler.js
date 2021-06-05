@@ -1,17 +1,17 @@
-import ObterColaboradores from "../../../domain/casos-de-uso/colaboradores/ObterColaboradores";
+import BusinessSuper from "../BusinessSuper";
 
-export default class ObterColaboradoresHandler extends ObterColaboradores {
-    #url;
+export default class ObterColaboradoresHandler extends BusinessSuper {
+    url;
     #httpServico;
 
     constructor(url, { httpServico }) {
         super();
 
-        this.#url = url;
+        this.url = url;
         this.#httpServico = httpServico;
     }
 
     async handler() {
-        return await this.#httpServico?.get(this.#url);
+        return await this.#httpServico?.get(this.url);
     }
 }

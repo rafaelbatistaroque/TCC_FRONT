@@ -1,15 +1,15 @@
 import { TEXTOS } from "../../../../main/utils/constantes";
-import CriarColaborador from "../../../domain/casos-de-uso/colaboradores/CriarColaborador";
+import BusinessSuper from "../BusinessSuper";
 
-export default class CriarColaboradorHandler extends CriarColaborador {
-    #url;
+export default class CriarColaboradorHandler extends BusinessSuper {
+    url;
     #httpServico;
     #validacoes;
 
     constructor(url, { httpServico }, validacoes) {
         super();
 
-        this.#url = url;
+        this.url = url;
         this.#httpServico = httpServico;
         this.#validacoes = validacoes;
     }
@@ -20,16 +20,15 @@ export default class CriarColaboradorHandler extends CriarColaborador {
         if (validacao.erro)
             return validacao;
 
-        return await this.#httpServico.post(this.#url, colaborador);
+        return await this.#httpServico.post(this.url, colaborador);
     }
 
-    validar({ numeroCPF, primeiroNome, sobrenome, funcaoId }) {
+    validar({ numeroCPF, primeiroNome, sobrenome }) {
 
         this.#validacoes
-            .EhRequerido(numeroCPF, TEXTOS.PARAMETRO_INVALIDO)
-            .EhRequerido(primeiroNome, TEXTOS.PARAMETRO_INVALIDO)
-            .EhRequerido(sobrenome, TEXTOS.PARAMETRO_INVALIDO)
-            .EhRequerido(funcaoId, TEXTOS.PARAMETRO_INVALIDO);
+            .EhRequerido(numeroCPF, TEXTOS.CPF_INVALIDO)
+            .EhRequerido(primeiroNome, TEXTOS.NOME_INVALIDO)
+            .EhRequerido(sobrenome, TEXTOS.SOBRENOME_INVALIDO);
 
         const validacao = {
             erro: this.#validacoes.EhInvalido,

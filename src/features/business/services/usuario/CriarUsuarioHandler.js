@@ -1,15 +1,15 @@
 import { TEXTOS } from "../../../../main/utils/constantes";
-import CriarUsuario from "../../../domain/casos-de-uso/usuario/CriarUsuario";
+import BusinessSuper from "../BusinessSuper";
 
-export default class CriarUsuarioHandler extends CriarUsuario {
-    #url;
+export default class CriarUsuarioHandler extends BusinessSuper {
+    url;
     #httpServico;
     #validacoes;
 
     constructor(url, { httpServico }, validacoes) {
         super();
 
-        this.#url = url;
+        this.url = url;
         this.#httpServico = httpServico;
         this.#validacoes = validacoes;
     }
@@ -20,14 +20,13 @@ export default class CriarUsuarioHandler extends CriarUsuario {
         if (validacao.erro)
             return validacao;
 
-        return await this.#httpServico.post(this.#url, usuario);
+        return await this.#httpServico.post(this.url, usuario);
     }
 
-    validar({ usuarioNome, usuarioSenha, usuarioPerfil }) {
+    validar({ usuarioNome, usuarioSenha }) {
         this.#validacoes
-            .EhRequerido(usuarioNome, TEXTOS.PARAMETRO_INVALIDO)
-            .EhRequerido(usuarioSenha, TEXTOS.PARAMETRO_INVALIDO)
-            .EhRequerido(usuarioPerfil, TEXTOS.PARAMETRO_INVALIDO);
+            .EhRequerido(usuarioNome, TEXTOS.NOME_INVALIDO)
+            .EhRequerido(usuarioSenha, TEXTOS.SENHA_INVALIDO);
 
         const validacao = {
             erro: this.#validacoes.EhInvalido,

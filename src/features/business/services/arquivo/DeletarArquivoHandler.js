@@ -1,15 +1,15 @@
 import { TEXTOS } from "../../../../main/utils/constantes";
-import DeletarArquivo from "../../../domain/casos-de-uso/arquivo/DeletarArquivo";
+import BusinessSuper from "../BusinessSuper";
 
-export default class DeletarArquivoHandler extends DeletarArquivo {
-    #url;
+export default class DeletarArquivoHandler extends BusinessSuper {
+    url;
     #httpServico;
     #validacoes;
 
     constructor(url, { httpServico }, validacoes) {
         super();
 
-        this.#url = url;
+        this.url = url;
         this.#httpServico = httpServico;
         this.#validacoes = validacoes;
     }
@@ -21,7 +21,7 @@ export default class DeletarArquivoHandler extends DeletarArquivo {
         if (validacao.erro)
             return validacao;
 
-        return await this.#httpServico?.delete(`${this.#url}${arquivoId}`);
+        return await this.#httpServico?.delete(`${this.url}${arquivoId}`);
     }
 
     validar(colaboradorId) {

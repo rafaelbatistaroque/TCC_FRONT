@@ -1,15 +1,15 @@
 import { TEXTOS } from "../../../../main/utils/constantes";
-import ObterColaborador from "../../../domain/casos-de-uso/colaboradores/ObterColaborador";
+import BusinessSuper from "../BusinessSuper";
 
-export default class ObterColaboradorHandler extends ObterColaborador {
-    #url;
+export default class ObterColaboradorHandler extends BusinessSuper {
+    url;
     #httpServico;
     #validacoes;
 
     constructor(url, { httpServico }, validacoes) {
         super();
 
-        this.#url = url;
+        this.url = url;
         this.#httpServico = httpServico;
         this.#validacoes = validacoes;
     }
@@ -21,7 +21,7 @@ export default class ObterColaboradorHandler extends ObterColaborador {
         if (validacao.erro)
             return validacao;
 
-        return await this.#httpServico.get(`${this.#url}${colaboradorId}`);
+        return await this.#httpServico.get(`${this.url}${colaboradorId}`);
     }
 
     validar(colaboradorId) {

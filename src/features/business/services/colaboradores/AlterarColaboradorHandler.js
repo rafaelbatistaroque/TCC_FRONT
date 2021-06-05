@@ -1,15 +1,15 @@
 import { TEXTOS } from "../../../../main/utils/constantes";
-import AlterarColaborador from "../../../domain/casos-de-uso/colaboradores/AlterarColaborador";
+import BusinessSuper from "../BusinessSuper";
 
-export default class AlterarColaboradorHandler extends AlterarColaborador {
-    #url;
+export default class AlterarColaboradorHandler extends BusinessSuper {
+    url;
     #httpServico;
     #validacoes;
 
     constructor(url, { httpServico }, validacoes) {
         super();
 
-        this.#url = url;
+        this.url = url;
         this.#httpServico = httpServico;
         this.#validacoes = validacoes;
     }
@@ -20,16 +20,15 @@ export default class AlterarColaboradorHandler extends AlterarColaborador {
         if (validacao.erro)
             return validacao;
 
-        return await this.#httpServico.put(this.#url, colaborador);
+        return await this.#httpServico.put(this.url, colaborador);
     }
 
-    validar({ id, primeiroNome, sobrenome, funcaoId }) {
+    validar({ id, primeiroNome, sobrenome }) {
 
         this.#validacoes
             .EhRequerido(id, TEXTOS.PARAMETRO_INVALIDO)
-            .EhRequerido(primeiroNome, TEXTOS.PARAMETRO_INVALIDO)
-            .EhRequerido(sobrenome, TEXTOS.PARAMETRO_INVALIDO)
-            .EhRequerido(funcaoId, TEXTOS.PARAMETRO_INVALIDO);
+            .EhRequerido(primeiroNome, TEXTOS.NOME_INVALIDO)
+            .EhRequerido(sobrenome, TEXTOS.SOBRENOME_INVALIDO);
 
         const validacao = {
             erro: this.#validacoes.EhInvalido,

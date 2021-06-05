@@ -1,6 +1,6 @@
-import ObterUsuarios from "../../../domain/casos-de-uso/usuario/ObterUsuarios";
+import BusinessSuper from "../BusinessSuper";
 
-export default class ObterUsuariosHandler extends ObterUsuarios {
+export default class ObterUsuariosHandler extends BusinessSuper {
     url;
     #httpServico;
 

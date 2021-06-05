@@ -13,6 +13,10 @@ export const TEXTOS = {
     MES_INVALIDO: "O campo mês é inválido.",
     ANO_INVALIDO: "O campo ano é invalido",
     ANEXO_INVALIDO: "O campo anexo é invalido",
+    CPF_INVALIDO: "Campo cpf é inválido.",
+    NOME_INVALIDO: "Campo nome é inválido.",
+    SOBRENOME_INVALIDO: "Campo sobrenome é inválido.",
+    SENHA_INVALIDO: "Campo senha é inválido.",
 };
 
 export const FUNCOES_COLABORADOR = [

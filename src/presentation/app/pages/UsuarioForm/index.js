@@ -21,12 +21,12 @@ export const UsuarioForm = ({ limparSessao, criarUsuario }) => {
     };
 
     const handlerSalvar = async () => {
-        const arquivo = UsuarioModel.criar(
+        const usuario = UsuarioModel.criar(
             usuarioNomeForm.valor,
             usuarioSenhaForm.valor,
             perfilForm.valor);
 
-        const { erro, data, statusCode } = await criarUsuario.handler(arquivo);
+        const { erro, data, statusCode } = await criarUsuario.handler(usuario);
 
         if (erro && statusCode === 401) {
             limparSessao();

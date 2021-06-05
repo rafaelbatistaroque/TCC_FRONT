@@ -8,7 +8,7 @@ export const usuarioFactory = (token, limparSessao) => {
     const url = `${API.urlBase}${API.usuario}/`;
     const { validacoes, httpServico } = criarDependencias(token);
     const obterUsuarios = new ObterUsuariosHandler(url, { httpServico }, validacoes);
-    const alterarStatus = new AlterarStatusUsuarioHandler(url, { httpServico });
+    const alterarStatus = new AlterarStatusUsuarioHandler(url, { httpServico }, validacoes);
 
     return {
         build: () => <Usuarios alterarStatus={alterarStatus} limparSessao={limparSessao} obterUsuarios={obterUsuarios} />,

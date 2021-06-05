@@ -25,7 +25,7 @@ export const obterArquivosFactory = (token, limparSessao) => {
     const { httpServico, validacoes } = criarDependencias(token);
 
     const obterColaborador = new ObterColaboradorHandler(urlColaborador, { httpServico }, validacoes);
-    const obterArquivos = new ObterArquivosHandler(url, { httpServico });
+    const obterArquivos = new ObterArquivosHandler(url, { httpServico }, validacoes);
     const deletarArquivo = new DeletarArquivoHandler(url, { httpServico }, validacoes);
 
     return {

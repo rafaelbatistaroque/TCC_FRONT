@@ -4,10 +4,10 @@ export default class UsuarioModel {
     usuarioPerfil;
     usuarioCodigo;
 
-    constructor({ usuarioNome, usuarioSenha, usuarioPerfil, usuarioCodigo }) {
+    constructor({ usuarioNome, usuarioSenha, usuarioPerfilNumber, usuarioCodigo }) {
         this.usuarioNome = usuarioNome;
         this.usuarioSenha = usuarioSenha;
-        this.usuarioPerfil = usuarioPerfil;
+        this.usuarioPerfil = usuarioPerfilNumber;
         this.usuarioCodigo = usuarioCodigo;
     }
 

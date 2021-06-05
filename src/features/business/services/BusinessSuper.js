@@ -1,6 +1,6 @@
-import { TEXTOS } from "../../../../main/utils/constantes";
+import { TEXTOS } from "../../../main/utils/constantes";
 
-export default class DeletarColaborador {
+export default class BusinessSuper {
     handler() {
         throw new Error(TEXTOS.NAO_IMPLEMENTADO);
     }

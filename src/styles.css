@@ -75,6 +75,19 @@ a {
 	animation: animarFadeInDeCima 0.3s forwards;
 }
 
+.paginaErro{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textoErro{
+    padding: 1rem;
+    background-color: var(--cor-clara);
+    border: var(--borda-padrao);
+}
+
 @keyframes animarFadeInDeCima {
 	to {
 		opacity: 1;

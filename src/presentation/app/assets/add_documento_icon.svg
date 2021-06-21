@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="19" height="22" viewBox="0 0 19 22">
+  <g id="add_documento_icon" transform="translate(-228 -620)">
+    <g id="Caminho_4" data-name="Caminho 4" transform="translate(228 620)" fill="none">
+      <path d="M4,0h8.078L19,7.3V18a4,4,0,0,1-4,4H4a4,4,0,0,1-4-4V4A4,4,0,0,1,4,0Z" stroke="none"/>
+      <path d="M 4 2 C 2.897199630737305 2 2 2.897199630737305 2 4 L 2 18 C 2 19.1028003692627 2.897199630737305 20 4 20 L 15 20 C 16.1028003692627 20 17 19.1028003692627 17 18 L 17 8.097965240478516 L 11.21821975708008 2 L 4 2 M 4 0 L 12.07800006866455 0 L 19 7.300539970397949 L 19 18 C 19 20.20914077758789 17.20914077758789 22 15 22 L 4 22 C 1.790859222412109 22 0 20.20914077758789 0 18 L 0 4 C 0 1.790859222412109 1.790859222412109 0 4 0 Z" stroke="none" fill="#3c8d46"/>
+    </g>
+    <path id="União_2" data-name="União 2" d="M-1137,7V5h-2a1,1,0,0,1-1-1,1,1,0,0,1,1-1h2V1a1,1,0,0,1,1-1,1,1,0,0,1,1,1V3h2a1,1,0,0,1,1,1,1,1,0,0,1-1,1h-2V7a1,1,0,0,1-1,1A1,1,0,0,1-1137,7Z" transform="translate(1373.5 630)" fill="#3c8d46"/>
+    <path id="Caminho_3" data-name="Caminho 3" d="M1413.47,615.413s-.157,6.1,0,6.377,6.252,0,6.252,0" transform="translate(-1174.124 5.778)" fill="none" stroke="#3c8d46" stroke-linecap="round" stroke-width="2"/>
+  </g>
+</svg>

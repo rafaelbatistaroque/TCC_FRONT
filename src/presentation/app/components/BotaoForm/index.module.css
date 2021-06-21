@@ -43,3 +43,8 @@
     background: url("../../assets/switch_off_icon.svg") no-repeat 50% / 70%;
     background-color: var(--cor-clara);
 }
+
+[finalidade="btnNovoDoc"]{
+    background: url("../../assets/add_documento_icon.svg") no-repeat 50% / 50%;
+    background-color: var(--cor-clara);
+}

@@ -22,7 +22,7 @@ const Rotas = ({ login, colaboradores, colaboradorForm, appPrincipal, arquivos, 
             <Route path={ROTA.LOGIN} element={login} />
             <Route
                 path="*"
-                element={<h1>Erro 404 - Página não encontrada</h1>}
+                element={<div className={"paginaErro"}><h1 className={"textoErro"}>Erro 404 - Página não encontrada</h1></div>}
             />
         </Routes>
     </>

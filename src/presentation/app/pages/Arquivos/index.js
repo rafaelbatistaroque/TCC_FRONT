@@ -95,7 +95,7 @@ export const Arquivos = ({ obterArquivos, obterColaborador, deletarArquivo, limp
                 <div className={styles.cabecalhoLista}>
                     <div className={styles.botoesCabecalho}>
                         <BotaoForm finalidade={5} onClick={handlerVoltar} />
-                        <BotaoForm finalidade={3} onClick={handlerCriarArquivo} />
+                        <BotaoForm finalidade={8} onClick={handlerCriarArquivo} />
                     </div>
                     {arquivos.length > 1 && <Input placeholder="Pesquisa" {...pesquisa} />}
                 </div>

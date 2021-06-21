@@ -68,10 +68,6 @@ export const Colaboradores = ({ obterColaboradores, deletarColaborador, ehPerfil
         navegarPara(NAVEGACAO.TELA_COLABORADOR_CRIAR);
     };
 
-    const handlerVoltar = () => {
-        navegarPara(NAVEGACAO.TELA_APP);
-    };
-
     const filtro = (item) => {
         if (pesquisa.valor.length === 0)
             return true;
@@ -86,7 +82,6 @@ export const Colaboradores = ({ obterColaboradores, deletarColaborador, ehPerfil
                 <ul className={`${styles.itensLista} animarFadeInDeCima`}>
                     <div className={styles.cabecalhoLista}>
                         <div className={styles.botoesCabecalho}>
-                            <BotaoForm finalidade={5} onClick={handlerVoltar} />
                             {ehPerfilAdministrador && <BotaoForm finalidade={3} onClick={handlerCriarColaborador} />}
                         </div>
                         {colaboradores.length > 1 && <Input placeholder="Pesquisa" {...pesquisa} />}
